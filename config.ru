@@ -1,2 +1,5 @@
 require './tracker'
-run Tracker
+
+map "/" do
+  run Tracker
+end
