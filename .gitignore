@@ -1,4 +1,5 @@
 .DS_Store
 .rvmrc
-/config.yml
+config/config.yml
 .idea
+config/deploy.rb

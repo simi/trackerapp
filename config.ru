@@ -1,0 +1,2 @@
+require './tracker'
+run Tracker
