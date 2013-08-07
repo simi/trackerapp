@@ -1,0 +1,28 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+
+<div class="container">
+  <% @users.each do |user| %>
+    <h2><%= user[:name] %></h2>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>minutes</th>
+        <th>at</th>
+        <th>description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% user[:records].each do |record| %>
+        <tr>
+          <td><%= record[:minutes] %></td>
+          <td><%= record[:created_at].strftime("%m/%d/%Y") %></td>
+          <td><%= record[:formatted_description] %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  <% end %>
+</div>

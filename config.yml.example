@@ -1,0 +1,8 @@
+users:
+  papricek:
+    name: "Karel Jan"
+    tracker: freckle
+    credentials:
+      host: karl
+      username: karl@gmail.com
+      token: xxxyyy
