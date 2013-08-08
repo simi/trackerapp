@@ -3,8 +3,6 @@ require 'sinatra/config_file'
 require 'date'
 require 'letsfreckle'
 
-
-
 class Tracker < Sinatra::Base
 
   register Sinatra::ConfigFile
@@ -27,6 +25,7 @@ class Tracker < Sinatra::Base
       end
 
       records = LetsFreckle::Entry.find(:from => @from.to_s)
+      records = records.select { |r| r.project_id == attrs['credentials']['project_id'].to_i }
       {name: name, records: records}
     end
 
