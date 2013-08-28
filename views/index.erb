@@ -2,25 +2,33 @@
 
 <div class="container">
   <% @users.each do |user| %>
-    <h2><%= user[:name] %></h2>
+    <h2><%= user.name %></h2>
 
     <table class="table">
       <thead>
       <tr>
-        <th>minutes</th>
+        <th>id</th>
+        <th>time</th>
         <th>at</th>
         <th>description</th>
       </tr>
       </thead>
 
       <tbody>
-      <% user[:records].each do |record| %>
+      <% user.records.each do |record| %>
         <tr>
-          <td><%= record[:minutes] %></td>
+          <td><%= record[:id] %></td>
+          <td><%= record[:minutes] / 60 %>:<%= record[:minutes] % 60 %></td>
           <td><%= record[:created_at].strftime("%m/%d/%Y") %></td>
           <td><%= record[:formatted_description] %></td>
         </tr>
       <% end %>
+      <tr>
+        <td>Total:</td>
+        <td><strong><%= user.total / 60 %>:<%= user.total % 60 %></strong></td>
+        <td></td>
+        <td></td>
+      </tr>
       </tbody>
     </table>
 
