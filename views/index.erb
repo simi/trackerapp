@@ -3,7 +3,7 @@
 
 <div class="container">
   <% @users.each do |user| %>
-    <h2><%= user.name %> (from <%= @from.to_s %>)</h2>
+    <h2><%= user.name %> (from <%= @from.strftime("%m/%d/%Y") %>)</h2>
 
     <table class="table">
       <thead>

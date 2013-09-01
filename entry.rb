@@ -18,7 +18,19 @@ class Entry < ActiveRecord::Base
                     original_minutes: record[:minutes],
                     minutes: record[:minutes],
                     original_id: record[:id], 
-                    description: record[:description])
+                    description: record[:formatted_description])
+        end
+      elsif attrs['tracker'] == 'tsv'
+        CSV.read(attrs['path'], { :col_sep => "\t" }).map do |line|
+          minutes = line[4].to_i
+          from = Time.parse(line[2])
+          to = Time.parse(line[3])
+          Entry.new(user: name,
+                    date: from.to_date,
+                    original_minutes: minutes,
+                    minutes: minutes + 15 - (minutes % 15),
+                    original_id: line[0],
+                    description: '')
         end
       end
     }.flatten

@@ -3,6 +3,7 @@ require 'sinatra/config_file'
 require 'date'
 require 'letsfreckle'
 require 'sinatra/activerecord'
+require 'csv'
 
 require_relative 'user'
 require_relative 'entry'
