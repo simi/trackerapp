@@ -1,13 +1,14 @@
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 
+
 <div class="container">
   <% @users.each do |user| %>
-    <h2><%= user.name %></h2>
+    <h2><%= user.name %> (from <%= @from.to_s %>)</h2>
 
     <table class="table">
       <thead>
       <tr>
-        <th>id</th>
+        <th>original_id</th>
         <th>time</th>
         <th>at</th>
         <th>description</th>
@@ -15,12 +16,12 @@
       </thead>
 
       <tbody>
-      <% user.records.each do |record| %>
+      <% user.entries.each do |entry| %>
         <tr>
-          <td><%= record[:id] %></td>
-          <td><%= record[:minutes] / 60 %>:<%= record[:minutes] % 60 %></td>
-          <td><%= record[:created_at].strftime("%m/%d/%Y") %></td>
-          <td><%= record[:formatted_description] %></td>
+          <td><%= entry.original_id %></td>
+          <td><%= entry.formatted_minutes %></td>
+          <td><%= entry.date.strftime("%m/%d/%Y") %></td>
+          <td><%= entry.description %></td>
         </tr>
       <% end %>
       <tr>

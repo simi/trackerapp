@@ -1,5 +1,8 @@
+.idea
 .DS_Store
 .rvmrc
+
 config/config.yml
-.idea
+config/database.yml
 config/deploy.rb
+db/*.sqlite3
