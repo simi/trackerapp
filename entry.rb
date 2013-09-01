@@ -18,7 +18,7 @@ class Entry < ActiveRecord::Base
                     original_minutes: record[:minutes],
                     minutes: record[:minutes],
                     original_id: record[:id], 
-                    description: record[:formatted_description])
+                    description: record[:description])
         end
       elsif attrs['tracker'] == 'tsv'
         CSV.read(attrs['path'], { :col_sep => "\t" }).map do |line|
