@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130831180657) do
     t.date     "date"
     t.datetime "from"
     t.datetime "to"
+    t.boolean  "exported",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

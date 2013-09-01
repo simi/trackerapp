@@ -12,6 +12,7 @@
         <th>time</th>
         <th>at</th>
         <th>description</th>
+        <th>exported</th>
       </tr>
       </thead>
 
@@ -22,6 +23,7 @@
           <td><%= entry.formatted_minutes %></td>
           <td><%= entry.date.strftime("%m/%d/%Y") %></td>
           <td><%= entry.description %></td>
+          <td><%= entry.exported %></td>
         </tr>
       <% end %>
       <tr>

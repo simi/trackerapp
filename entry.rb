@@ -30,7 +30,7 @@ class Entry < ActiveRecord::Base
                     original_minutes: minutes,
                     minutes: minutes + 15 - (minutes % 15),
                     original_id: line[0],
-                    description: '')
+                    description: line[6])
         end
       end
     }.flatten

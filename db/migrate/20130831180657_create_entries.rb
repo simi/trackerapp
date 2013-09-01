@@ -11,6 +11,7 @@ class CreateEntries < ActiveRecord::Migration
       t.date :date
       t.datetime :from
       t.datetime :to
+      t.boolean :exported, default: false
 
       t.timestamps
     end
