@@ -32,3 +32,7 @@ task :export do
   end
 
 end
+
+task :fix do
+  Entry.where(user: 'josef').where("date >= ?", Date.new(2013, 9, 1)).destroy_all
+end
