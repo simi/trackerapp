@@ -22,9 +22,9 @@ class Entry < ActiveRecord::Base
         end
       elsif attrs['tracker'] == 'tsv'
         CSV.read(attrs['path'], { :col_sep => "|" }).map do |line|
+          next unless line[0]
           minutes = line[3].to_i
           from = Time.parse(line[1])
-          to = Time.parse(line[2])
           Entry.new(user: name,
                     date: from.to_date,
                     original_minutes: minutes,
