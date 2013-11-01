@@ -1,39 +1,90 @@
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tracker</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style type="text/css">
+      .navbar .container { max-width: 1170px; }
+      body > .container { margin-top: 60px; }
+      .right { float: right; }
+      body .navbar .brand { padding-left: 40px; }
+    </style>
+  </head>
 
+  <body data-target=".navbar">
+    <div class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-inner">
+          <a class="brand" href="#">Tracker</a>
+          <ul class="nav">
+            <% @users.each do |user| %>
+              <li><a href="#<%= user.name %>"><span class="icon-user"></span><%= user.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <a class="btn" href="/?from=<%= @previous_month.strftime("%m/%d/%Y") %>">
+        <span class="icon-backward"></span>
+        <%= @previous_month.strftime("%m/%d/%Y") %>
+      </a>
 
-<div class="container">
-  <% @users.each do |user| %>
-    <h2><%= user.name %> (from <%= @from.strftime("%m/%d/%Y") %>)</h2>
-
-    <table class="table">
-      <thead>
-      <tr>
-        <th>original_id</th>
-        <th>time</th>
-        <th>at</th>
-        <th>description</th>
-        <th>exported</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% user.entries.each do |entry| %>
-        <tr>
-          <td><%= entry.original_id %></td>
-          <td><%= entry.formatted_minutes %></td>
-          <td><%= entry.date.strftime("%m/%d/%Y") %></td>
-          <td><%= entry.description %></td>
-          <td><%= entry.exported %></td>
-        </tr>
+      <% if Date.today >= @next_month %>
+        <a class="btn right" href="/?from=<%= @next_month.strftime("%m/%d/%Y") %>">
+          <%= @next_month.strftime("%m/%d/%Y") %>
+          <span class="icon-forward"></span>
+        </a>
       <% end %>
-      <tr>
-        <td>Total:</td>
-        <td><strong><%= user.total / 60 %>:<%= user.total % 60 %></strong></td>
-        <td></td>
-        <td></td>
-      </tr>
-      </tbody>
-    </table>
 
-  <% end %>
-</div>
+      <% @users.each do |user| %>
+        <h2 id="<%= user.name %>"><%= user.name %> (from <%= @from.strftime("%m/%d/%Y") %>)</h2>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>original_id</th>
+            <th>time</th>
+            <th>at</th>
+            <th>description</th>
+            <th>exported</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% user.entries.each do |entry| %>
+            <tr>
+              <td><%= entry.original_id %></td>
+              <td><%= entry.formatted_minutes %></td>
+              <td><%= entry.date.strftime("%m/%d/%Y") %></td>
+              <td><%= entry.description %></td>
+              <td><%= entry.exported %></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td>Total:</td>
+            <td><strong><%= user.total / 60 %>:<%= user.total % 60 %></strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          </tbody>
+        </table>
+
+      <% end %>
+
+      <a class="btn" href="/?from=<%= @previous_month.strftime("%m/%d/%Y") %>">
+        <span class="icon-backward"></span>
+        <%= @previous_month.strftime("%m/%d/%Y") %>
+      </a>
+
+      <% if Date.today >= @next_month %>
+        <a class="btn right" href="/?from=<%= @next_month.strftime("%m/%d/%Y") %>">
+          <%= @next_month.strftime("%m/%d/%Y") %>
+          <span class="icon-forward"></span>
+        </a>
+      <% end %>
+    </div>
+  </body>
+</html>
