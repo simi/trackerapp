@@ -16,6 +16,7 @@ end
 task :export do
 
   Entry.where(exported: false).each do |entry|
+    next if entry.description.blank?
     user = settings.users.detect{|name, attrs| name == entry.user }
     apikey = user[1]['minutedock_apikey']
     next if apikey.blank?
