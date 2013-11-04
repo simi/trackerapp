@@ -6,9 +6,7 @@ config_file 'config/config.yml'
 task :import do
 
   Entry.all_original(settings).each do |entry|
-    if entry.import?
-      entry.save!
-    end
+    entry.save!
   end
 
 end

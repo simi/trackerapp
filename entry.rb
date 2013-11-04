@@ -25,19 +25,23 @@ class Entry < ActiveRecord::Base
           next if line.size < 2
           minutes = line[3].to_i
           from = Time.parse(line[1])
-          Entry.new(user: name,
-                    date: from.to_date,
-                    original_minutes: minutes,
-                    minutes: minutes + 15 - (minutes % 15),
-                    original_id: line[0],
-                    description: line[4])
+          original_id = line[0]
+          existing  = Entry.find_by_original_id(original_id)
+          if existing.present?
+            existing.description = line[4]
+            existing
+          else
+            Entry.new(user: name,
+                      date: from.to_date,
+                      original_minutes: minutes,
+                      minutes: minutes + 15 - (minutes % 15),
+                      original_id: original_id,
+                      description: line[4])
+          end
+          
         }.compact
       end
     }.flatten
-  end
-
-  def import?
-    Entry.where(original_id: self.original_id).blank?
   end
 
   private
