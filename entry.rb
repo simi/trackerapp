@@ -12,14 +12,17 @@ class Entry < ActiveRecord::Base
 
         records = LetsFreckle::Entry.find
         records = records.select { |r| r.project_id == attrs['credentials']['project_id'].to_i }
-        records.map do |record|
-          Entry.new(user: name,
-                    date: record[:date],
-                    original_minutes: record[:minutes],
-                    minutes: record[:minutes],
-                    original_id: record[:id], 
-                    description: record[:description])
-        end
+        records.map { |record|
+          existing  = Entry.find_by_original_id(record[:id])
+          if existing.blank?
+            Entry.new(user: name,
+                      date: record[:date],
+                      original_minutes: record[:minutes],
+                      minutes: record[:minutes],
+                      original_id: record[:id], 
+                      description: record[:description])
+          end
+        }.compact
       elsif attrs['tracker'] == 'tsv'
         CSV.read(attrs['path'], { :col_sep => "|" }).map { |line|
           next if line.size < 2
