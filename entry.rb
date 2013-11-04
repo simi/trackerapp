@@ -21,7 +21,7 @@ class Entry < ActiveRecord::Base
                     description: record[:description])
         end
       elsif attrs['tracker'] == 'tsv'
-        CSV.read(attrs['path'], { :col_sep => "|" }).map do |line|
+        CSV.read(attrs['path'], { :col_sep => "|" }).map { |line|
           next if line.size < 2
           minutes = line[3].to_i
           from = Time.parse(line[1])
@@ -31,7 +31,7 @@ class Entry < ActiveRecord::Base
                     minutes: minutes + 15 - (minutes % 15),
                     original_id: line[0],
                     description: line[4])
-        end
+        }.compact
       end
     }.flatten
   end
