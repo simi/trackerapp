@@ -1,7 +1,8 @@
-require "sinatra/activerecord/rake"
-require "./tracker"
 require "httparty"
-config_file 'config/config.yml'
+
+require File.expand_path('../config/application', __FILE__)
+
+Trackerapp::Application.load_tasks
 
 task :import do
 
@@ -26,8 +27,8 @@ task :export do
         logged_at: entry.date.to_time
       }
     }
-    response = HTTParty.post(url, body: body)
-    entry.update_column(:exported, true) if response.code == 200
+    #response = HTTParty.post(url, body: body)
+    #entry.update_column(:exported, true) if response.code == 200
   end
 
 end

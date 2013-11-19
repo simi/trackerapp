@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Trackerapp</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tracker</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <style type="text/css">
+      .navbar .container { max-width: 1170px; }
+      body > .container { margin-top: 60px; }
+      .right { float: right; }
+      body .navbar .brand { padding-left: 40px; }
+      body .navbar .user_nav { padding-right: 40px; float:right; margin: auto;}
+    </style>
+  </head>
 
-<%= yield %>
-
-</body>
+  <body data-target=".navbar">
+    <div class="navbar navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-inner">
+          <a class="brand" href="/">Tracker</a>
+          <div class="user_nav">
+            <% if current_user %>
+              <span class="icon-user"></span><%= current_user.username %>.
+              <%= link_to "Log out", logout_path %>
+            <% else %>
+              <%= link_to "log in", login_path %>
+            <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <body>
+  <% flash.each do |name, msg| %>
+    <div class="container">
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+  <%= yield %>
+  </body>
 </html>
