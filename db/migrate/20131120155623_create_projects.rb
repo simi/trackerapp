@@ -20,6 +20,11 @@ class CreateProjects < ActiveRecord::Migration
 
     Entry.update_all(project_id: project.id)
 
+    USERS_CONFIG.each do |key, array|
+      user = User.new(:username => key, :email => array["e-mail"] ,:password => "password", :password_confirmation => "password")
+      user.save
+    end
+
     Entry.all.each do |entry|
       entry.user_id = User.find_by(username: entry.username).id
       entry.save
