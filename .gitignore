@@ -1,6 +1,7 @@
 .idea
 .DS_Store
 .rvmrc
+*.swp
 
 config/config.yml
 config/database.yml

@@ -1,4 +1,8 @@
 class Entry < ActiveRecord::Base
+  belongs_to :project
+  belongs_to :user
+
+  attr_accessible :username, :description, :project_id, :minutes, :user_id, :date
 
   def formatted_minutes
     "#{self.minutes / 60}: #{self.minutes % 60}"
@@ -15,7 +19,7 @@ class Entry < ActiveRecord::Base
         records.map { |record|
           existing  = Entry.find_by_original_id(record[:id])
           if existing.blank?
-            Entry.new(user: name,
+            Entry.new(username: name,
                       date: record[:date],
                       original_minutes: record[:minutes],
                       minutes: record[:minutes],
@@ -34,7 +38,7 @@ class Entry < ActiveRecord::Base
             existing.description = line[4]
             existing
           else
-            Entry.new(user: name,
+            Entry.new(username: name,
                       date: from.to_date,
                       original_minutes: minutes,
                       minutes: minutes + 15 - (minutes % 15),

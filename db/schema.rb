@@ -11,18 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131115203719) do
+ActiveRecord::Schema.define(version: 20131120155623) do
 
   create_table "entries", force: true do |t|
     t.string   "original_id"
     t.integer  "original_minutes"
     t.integer  "minutes"
     t.text     "description"
-    t.string   "user"
+    t.string   "username"
     t.date     "date"
     t.datetime "from"
     t.datetime "to"
     t.boolean  "exported",         default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "user_id"
+  end
+
+  create_table "project_users", force: true do |t|
+    t.integer  "project_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
