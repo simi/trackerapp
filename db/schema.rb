@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20131120155623) do
     t.integer  "original_minutes"
     t.integer  "minutes"
     t.text     "description"
-    t.string   "username"
     t.date     "date"
     t.datetime "from"
     t.datetime "to"

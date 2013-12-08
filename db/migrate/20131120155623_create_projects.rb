@@ -1,4 +1,4 @@
-# Both current users needs to be created before running 
+# Both current users needs to be created before running
 # this migration.
 class CreateProjects < ActiveRecord::Migration
   def change
@@ -7,18 +7,16 @@ class CreateProjects < ActiveRecord::Migration
 
       t.timestamps
     end
-  
+
     change_table :entries do |t|
       t.rename :user, :username
       t.integer :project_id
       t.integer :user_id
     end
 
-    project = Project.new
-    project.name = 'DesksNearMe'
-    project.save
+    desks_near_me_project = Project.create(name: 'DesksNearMe')
 
-    Entry.update_all(project_id: project.id)
+    Entry.update_all(project_id: desks_near_me_project.id)
 
     USERS_CONFIG.each do |key, array|
       user = User.new(:username => key, :email => array["e-mail"] ,:password => "password", :password_confirmation => "password")
@@ -28,8 +26,8 @@ class CreateProjects < ActiveRecord::Migration
     Entry.all.each do |entry|
       entry.user_id = User.find_by(username: entry.username).id
       entry.save
-    end 
-    
+    end
+
     create_table :project_users do |t|
       t.integer :project_id, :null => false
       t.integer :user_id, :null => false
@@ -40,9 +38,11 @@ class CreateProjects < ActiveRecord::Migration
     User.all.each do |user|
       project_user = ProjectUser.new
       project_user.user_id = user.id
-      project_user.project_id = project.id
+      project_user.project_id = desks_near_me_project.id
       project_user.save
     end
-   
+
+    remove_column :entries, :username
+
   end
 end

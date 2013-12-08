@@ -5,11 +5,11 @@
         <div class="form-inline">
           <%= form_for :entry, url: entries_path do |f| %>
               <%= f.label :time_spent %>
-              <%= f.time_field :time_spent, placeholder: 'e.g. 1:30, 1.5, 90, 1h', :style => "width: 10em;" %>
+              <%= f.text_field :time_spent, placeholder: 'e.g. 1:30, 1.5, 90, 1h', :style => "width: 10em;" %>
               <%= f.label :project_id %>
               <%= f.collection_select :project_id, Project.all, :id, :name %>
               <%= f.label :description %>
-              <%= f.text_area :description, :rows => "1"%> 
+              <%= f.text_area :description, :rows => "1"%>
               <%= f.label :date %>
               <%= f.date_select("date", {}, :style => "width: 5em;") %>
               <%= f.submit "Add" %>
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-      
+
     <div class="container">
       <a class="btn" href="/entries/?from=<%= @previous_month.strftime("%m/%d/%Y") %>">
         <span class="icon-backward"></span>
