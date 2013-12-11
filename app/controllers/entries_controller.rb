@@ -13,8 +13,6 @@ class EntriesController < ApplicationController
 
     @previous_month = (@from - 1.month).at_beginning_of_month
     @next_month = (@from + 1.month).at_beginning_of_month
-    puts @previous_month
-    puts @next_month
 
     @entries = Entry.where(user_id: current_user.id).where('date >= ?', @from).where('date < ?', @next_month).order('date desc')
     @total = @entries.sum(:minutes)
@@ -27,6 +25,7 @@ class EntriesController < ApplicationController
 
   def create
     @minutes = TimeParser.new(params[:entry][:time_spent]).minutes
+    @project_id = Project.find_by(name: params[:entry][:project_name]).id
 
     @entry = Entry.new(entry_params)
     @entry.save
@@ -43,6 +42,6 @@ class EntriesController < ApplicationController
 
   private
     def entry_params
-      params.require(:entry).permit(:description, :project_id, :date).merge(minutes: @minutes, user_id: current_user.id)
+      params.require(:entry).permit(:description, :date).merge(minutes: @minutes, user_id: current_user.id, project_id: @project_id)
     end
 end
