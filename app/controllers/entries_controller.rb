@@ -2,6 +2,8 @@ class EntriesController < ApplicationController
   before_filter :require_login
   include TimeParser
 
+  autocomplete :project, :name, :full => true
+
   def index
     @from = if params[:from]
       Date.strptime(params[:from], '%d/%m/%Y')

@@ -35,6 +35,9 @@ end
 gem 'httparty'
 gem 'sorcery'
 gem 'protected_attributes'
+gem 'jquery-ui-rails'
+gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
