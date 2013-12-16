@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :require_login
-  include TimeParser
+  require "time_parser"
 
   autocomplete :project, :name, :full => true
 
@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @minutes = TimeParser.new(params[:entry][:time_spent]).minutes
+    @minutes = TimeParser::TimeParser.new(params[:entry][:time_spent]).minutes
     @project_id = Project.find_by(name: params[:entry][:project_name]).id
 
     @entry = Entry.new(entry_params)

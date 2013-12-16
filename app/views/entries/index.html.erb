@@ -15,8 +15,6 @@
               <script type="text/javascript">
               $(function() {
                 $('.datepicker').datepicker({
-                  showOn: "button",
-                  buttonText: "datepicker",
                   showButtonPanel: true,
                   dateFormat: 'dd/mm/yy',});
                 });
@@ -28,17 +26,7 @@
     </div>
 
     <div class="container">
-      <a class="btn" href="/entries/?from=<%= @previous_month.strftime("%d/%m/%Y") %>">
-        <span class="icon-backward"></span>
-        <%= @previous_month.strftime("%d/%m/%Y") %>
-      </a>
-
-      <% if Date.today >= @next_month %>
-        <a class="btn right" href="/entries/?from=<%= @next_month.strftime("%d/%m/%Y") %>">
-          <%= @next_month.strftime("%d/%m/%Y") %>
-          <span class="icon-forward"></span>
-        </a>
-      <% end %>
+      <%= render "buttons" %>
 
       <h2 id="<%= current_user.username %>"><%= current_user.username %> (for <%= @from.strftime("%B %Y") %>)</h2>
 
@@ -75,17 +63,7 @@
         </tbody>
       </table>
 
-      <a class="btn" href="/entries/?from=<%= @previous_month.strftime("%d/%m/%Y") %>">
-        <span class="icon-backward"></span>
-        <%= @previous_month.strftime("%d/%m/%Y") %>
-      </a>
-
-      <% if Date.today >= @next_month %>
-        <a class="btn right" href="/entries/?from=<%= @next_month.strftime("%d/%m/%Y") %>">
-          <%= @next_month.strftime("%d/%m/%Y") %>
-          <span class="icon-forward"></span>
-        </a>
-      <% end %>
+      <%= render "buttons" %>
     </div>
   </body>
 </html>
