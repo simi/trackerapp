@@ -14,7 +14,3 @@ set :default_environment, {
 }
 
 set :normal_symlinks, ["config/database.yml", "config/config.yml", "db/#{rails_env}.sqlite3"]
-
-require "whenever/capistrano"
-set :whenever_environment, defer { stage }
-set :whenever_command, "bundle exec whenever"
