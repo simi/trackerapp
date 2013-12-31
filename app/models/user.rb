@@ -11,4 +11,16 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_uniqueness_of :username
+
+  serialize :settings, Hash
+
+  def new_entries
+    provider.all
+  end
+
+  private
+  def provider
+    "Entry::#{provider_type.classify}Provider".constantize.new(settings[provider_type.to_sym])
+  end
+
 end

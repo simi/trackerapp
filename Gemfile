@@ -38,6 +38,10 @@ gem 'protected_attributes'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 
+# clients
+gem 'letsfreckle-client', require: 'letsfreckle'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -51,3 +55,5 @@ gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquer
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 #
+
+
