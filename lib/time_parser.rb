@@ -17,7 +17,9 @@ class TimeParser
     elsif @time_spent.include? "minut"
       @minutes = @time_spent.to_i
     else
-      @minutes = @time_spent.to_i rescue @minutes = nil
+      @minutes = @time_spent.to_i
     end
+  rescue
+    nil
   end
 end
