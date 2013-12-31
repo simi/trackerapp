@@ -18,8 +18,8 @@ namespace :tracker do
 
     Entry.where(exported: false).each do |entry|
       next if entry.description.blank?
-      user = settings.users.detect{|name, attrs| name == entry.user }
-      apikey = user[1]['minutedock_apikey']
+      user = entry.user
+      apikey = entry.user.settings[:minutedock][:apikey] rescue nil
       next if apikey.blank?
       url = "https://minutedock.com/api/v1/entries.json?api_key=#{apikey}"
       body = {
