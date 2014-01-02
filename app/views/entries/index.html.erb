@@ -7,7 +7,7 @@
             <% if @entry.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this post from being saved:</h2>
-             
+
                 <ul>
                 <% @entry.errors.full_messages.each do |msg| %>
                   <li><%= msg %></li>
@@ -47,7 +47,7 @@
     <div class="container">
       <%= render "buttons" %>
 
-      <h2 id="<%= current_user.username %>"><%= current_user.username %> (for <%= @from.strftime("%B %Y") %>)</h2>
+      <h2 id="<%= current_user.username %>"><%= current_user.username %> (<%= @from.strftime("%B %Y") %>)</h2>
 
       <table class="table">
         <thead>

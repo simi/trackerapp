@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20131231141035) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.text     "settings"
     t.string   "provider_type"
+    t.text     "settings"
   end
 
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
