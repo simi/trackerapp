@@ -41,7 +41,13 @@ gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquer
 # clients
 gem 'letsfreckle-client', require: 'letsfreckle'
 
-
+# testing
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "launchy"
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

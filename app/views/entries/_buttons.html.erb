@@ -3,9 +3,7 @@
   <%= @previous_month.strftime("%B %Y") %>
 </a>
 
-<% if Date.today >= @next_month %>
-  <a class="btn right" href="/entries/?from=<%= @next_month.strftime("%d/%m/%Y") %>">
-    <%= @next_month.strftime("%B %Y") %>
-    <span class="icon-forward"></span>
-  </a>
-<% end %>
+<a class="btn right" href="/entries/?from=<%= @next_month.strftime("%d/%m/%Y") %>">
+  <%= @next_month.strftime("%B %Y") %>
+  <span class="icon-forward"></span>
+</a>

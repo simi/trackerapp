@@ -1,5 +1,5 @@
 Trackerapp::Application.routes.draw do
-  root to: "home#welcome"
+  root to: "entries#index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   resources :sessions
