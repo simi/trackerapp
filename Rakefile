@@ -6,9 +6,13 @@ Trackerapp::Application.load_tasks
 
 namespace :tracker do
   task :import => :environment do
+
+    project = Project.find_by_name('DesksNearMe')
+
     User.all.each do |user|
       user.new_entries.each do |hash|
-        entry = user.entry.build(hash)
+        entry = user.entries.build(hash)
+        entry.project = project
         puts "Failed importing for: #{hash}, #{entry.errors.inspect}" if not entry.save
       end
     end
