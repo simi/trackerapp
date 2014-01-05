@@ -17,7 +17,11 @@ class TimeParser
     elsif @time_spent.include? "minut"
       @minutes = @time_spent.to_i
     else
-      @minutes = @time_spent.to_i
+      if /.*[a-zA-Z].*/.match(@time_spent)
+        @minutes = nil
+      else
+        @minutes = @time_spent.to_i
+      end
     end
   rescue
     nil

@@ -14,7 +14,7 @@ class EntriesController < ApplicationController
 
     @entries = Entry.where(user_id: current_user.id).where('date >= ?', @from).where('date < ?', @next_month).order('date desc')
     @total = @entries.sum(:minutes)
-    
+
     @entry ||= Entry.new
 
   end
@@ -24,9 +24,9 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @minutes = TimeParser::TimeParser.new(params[:entry][:time_spent]).minutes rescue nil
+    @minutes = TimeParser.new(params[:entry][:time_spent]).minutes rescue nil
     @project_id = Project.find_by(name: params[:entry][:project_name]).id rescue nil
-  
+
     @entry = Entry.new(entry_params)
     if @entry.save
 
@@ -41,7 +41,7 @@ class EntriesController < ApplicationController
     else
       index
       render :index
-    end    
+    end
   end
 
   private
