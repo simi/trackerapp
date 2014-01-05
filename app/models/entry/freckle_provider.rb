@@ -21,7 +21,6 @@ class Entry::FreckleProvider
       next if Entry.find_by_original_id(record[:id]).present?
       next if record[:description].blank?
       {
-        username: name,
         date: record[:date],
         original_minutes: record[:minutes],
         minutes: record[:minutes],

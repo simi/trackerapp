@@ -16,7 +16,6 @@ class Entry::TsvProvider
       minutes = line[3].to_i
       from = Time.parse(line[1])
       {
-        username: name,
         date: from.to_date,
         original_minutes: minutes,
         minutes: minutes + 15 - (minutes % 15),
