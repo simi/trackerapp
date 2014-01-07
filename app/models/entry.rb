@@ -2,7 +2,7 @@ class Entry < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
-  attr_accessible :username, :description, :project_id, :minutes, :user_id, :date, :time_spent, :project_name
+  attr_accessible :username, :description, :project_id, :minutes, :user_id, :date, :time_spent, :project_name, :original_id
   attr_accessor :time_spent, :project_name
   
   validates :date, presence: true, :allow_nil => false
