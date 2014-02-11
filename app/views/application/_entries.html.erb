@@ -1,0 +1,51 @@
+<div class="container">
+  <%= render "buttons" %>
+
+  <h2><%= @from.strftime("%B %Y") %></h2>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>project</th>
+      <th>time</th>
+      <th>at</th>
+      <th>description</th>
+      <th>original_id</th>
+      <th>exported</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>Total:</td>
+      <td><strong><%= @total / 60 %>:<%= @total % 60 %></strong></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.project.name %></td>
+        <td><%= entry.formatted_minutes %></td>
+        <td><%= entry.date.strftime("%d/%m/%Y") %></td>
+        <td><%= entry.description %></td>
+        <td><%= entry.original_id %></td>
+        <td><%= entry.exported %></td>
+      </tr>
+    <% end %>
+    <% if @entries.any? %>
+      <tr>
+        <td>Total:</td>
+        <td><strong><%= @total / 60 %>:<%= @total % 60 %></strong></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= render "buttons" %>
+</div>

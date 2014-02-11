@@ -1,0 +1,30 @@
+<div class="container">
+  <%= form_for @user do |f| %>
+    <div class="col-lg-5">
+      <div class="input-group">
+        <%= f.label :username, class: "input-group-addon" %>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :email, class: "input-group-addon" %>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :password, class: "input-group-addon" %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :password_confirmation, class: "input-group-addon" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+      <div class="input-group">
+        <%= f.label :admin, class: "checkbox" do %>
+          <%= f.check_box :admin, class: "checkbox inline" %>Admin?
+        <% end %>
+      </div>
+      <div class="input-group">
+          <%= f.submit "Save", class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</div>

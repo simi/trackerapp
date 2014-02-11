@@ -1,0 +1,9 @@
+<a class="btn btn-default" href="/entries/?from=<%= @previous_month.strftime("%d/%m/%Y") %>">
+  <span class="glyphicon glyphicon-backward"></span>
+  <%= @previous_month.strftime("%B %Y") %>
+</a>
+
+<a class="btn btn-default pull-right" href="/entries/?from=<%= @next_month.strftime("%d/%m/%Y") %>">
+  <%= @next_month.strftime("%B %Y") %>
+  <span class="glyphicon glyphicon-forward"></span>
+</a>

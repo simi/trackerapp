@@ -15,5 +15,6 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.autocomplete
 //= require autocomplete-rails
+//= require jquery.tokeninput
 //= require turbolinks
 //= require_tree .

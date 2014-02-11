@@ -7,4 +7,5 @@ Trackerapp::Application.routes.draw do
     get :autocomplete_project_name, :on => :collection
   end
   resources :projects
+  resources :users
 end

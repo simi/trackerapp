@@ -37,6 +37,7 @@ gem 'sorcery'
 gem 'protected_attributes', '~> 1.0.5'
 gem 'jquery-ui-rails'
 gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
+gem 'jquery-tokeninput-rails'
 
 # clients
 gem 'letsfreckle-client', require: 'letsfreckle'
