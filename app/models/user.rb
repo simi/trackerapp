@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
   has_many :project_users
   has_many :projects, :through => :project_users
 
-  attr_accessible :username, :email, :password, :password_confirmationa, :admin
+  attr_accessible :username, :email, :password, :password_confirmation, :admin
 
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :email, :username
   validates_uniqueness_of :email
   validates_uniqueness_of :username
+  validates :username, :email, :presence => true, :allow_nil => false
+  validates :password, :presence => true,  :confirmation => true
+  validates :password_confirmation, :presence => true
 
   serialize :settings, Hash
 
