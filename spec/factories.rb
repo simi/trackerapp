@@ -3,6 +3,7 @@ FactoryGirl.define do
     username "tester"
     email "tester@test.com"
     password "secret"
+    password_confirmation "secret"
     salt "asdasdastr4325234324sdfds"
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("secret","asdasdastr4325234324sdfds")
   end
@@ -11,6 +12,7 @@ FactoryGirl.define do
     username "tester_admin"
     email "tester_admin@test.com"
     password "secret_admin"
+    password_confirmation "secret_admin"
     salt "asdasdastr4325234324sdfds"
     admin true
     crypted_password Sorcery::CryptoProviders::BCrypt.encrypt("secret_admin","asdasdastr4325234324sdfds")

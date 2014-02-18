@@ -9,6 +9,6 @@ class Project < ActiveRecord::Base
   attr_reader :user_tokens
 
   def user_tokens=(ids)
-    self.user_ids = ids.split(",")
+    self.user_ids = ids.split(",").uniq
   end
 end
