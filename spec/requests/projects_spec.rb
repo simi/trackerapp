@@ -15,7 +15,7 @@ describe "Project" do
     fill_in 'username', with: @admin_user.username
     fill_in 'password', with: "secret_admin"
     click_button 'Log in'
-    visit "/projects"
+    visit "/admin/projects"
   end
 
   describe "GET /projects" do

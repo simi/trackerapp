@@ -39,11 +39,11 @@ describe "Sessions" do
     page.should have_no_content("My Entries")
     page.should have_no_content("Administration")
 
-    visit "/projects"
+    visit "/admin/projects"
     page.should have_content("You must be admin to access this section")
     current_path.should == "/"
 
-    visit "/users"
+    visit "/admin/users"
     page.should have_content("You must be admin to access this section")
     current_path.should == "/"
 

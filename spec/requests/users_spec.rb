@@ -18,7 +18,7 @@ describe "User" do
     fill_in 'username', with: @admin_user.username
     fill_in 'password', with: "secret_admin"
     click_button 'Log in'
-    visit "/users"
+    visit "/admin/users"
   end
 
   describe "GET /users" do

@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class Admin::ProjectsController < ApplicationController
   before_action :require_admin
 
   def new
@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update(project_params)
-      redirect_to projects_path, :notice => "Project updated."
+      redirect_to admin_projects_path, :notice => "Project updated."
     else
       render 'edit'
     end
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to projects_path, :notice => "Project created."
+      redirect_to admin_projects_path, :notice => "Project created."
     else
       index
       render :index
@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to projects_path
+    redirect_to admin_projects_path
   end
 
   private

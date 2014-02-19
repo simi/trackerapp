@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :require_admin
 
   def index
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 
   def new
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_path, :notice => "User created."
+      redirect_to admin_users_path, :notice => "User created."
     else
       index
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to users_path, :notice => "User updated."
+      redirect_to admin_users_path, :notice => "User updated."
     else
       render 'edit'
     end

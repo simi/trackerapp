@@ -6,6 +6,8 @@ Trackerapp::Application.routes.draw do
   resources :entries do
     get :autocomplete_project_name, :on => :collection
   end
-  resources :projects
-  resources :users
+  namespace :admin do
+    resources :projects
+    resources :users
+  end
 end
