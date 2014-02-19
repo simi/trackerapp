@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_uniqueness_of :username
   validates :username, :email, :presence => true, :allow_nil => false
-  validates :password, :presence => true,  :confirmation => true
-  validates :password_confirmation, :presence => true
+  validates :password, :presence => true,  :confirmation => true, :on => :create
+  validates :password_confirmation, :presence => true, :on => :create
 
   serialize :settings, Hash
 
