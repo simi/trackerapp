@@ -13,4 +13,4 @@ set :default_environment, {
   "PATH" => "/home/#{user}/.rbenv/shims:/home/#{user}/.rbenv/bin:$PATH"
 }
 
-set :normal_symlinks, ["config/database.yml", "db/#{rails_env}.sqlite3"]
+set :normal_symlinks, ["config/database.yml", "db/production.sqlite3"]

@@ -36,3 +36,4 @@ set :directory_symlinks, {
 # Miscs
 set :keep_releases, 3
 after "deploy:update", "deploy:cleanup"
+after "deploy", "deploy:migrate"
