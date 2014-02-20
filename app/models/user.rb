@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :project_users
   has_many :projects, :through => :project_users
 
-  attr_accessible :username, :email, :password, :password_confirmation, :admin
+  attr_accessible :username, :email, :password, :password_confirmation
 
   validates_uniqueness_of :email
   validates_uniqueness_of :username
