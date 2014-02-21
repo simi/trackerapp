@@ -1,9 +1,0 @@
-<a class="btn btn-default" href="<%= admin_project_path(@project)%>/?from=<%= @previous_month.strftime("%d/%m/%Y") %>">
-  <span class="glyphicon glyphicon-backward"></span>
-  <%= @previous_month.strftime("%B %Y") %>
-</a>
-
-<a class="btn btn-default pull-right" href="<%= admin_project_path(@project) %>/?from=<%= @next_month.strftime("%d/%m/%Y") %>">
-  <%= @next_month.strftime("%B %Y") %>
-  <span class="glyphicon glyphicon-forward"></span>
-</a>

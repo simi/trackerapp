@@ -1,0 +1,45 @@
+.container
+
+  = render 'pagination'
+
+  h2 = @from.strftime("%B %Y")
+
+  table.table
+    thead
+      tr
+        th project
+        th time
+        th at
+        th description
+        th original_id
+        th exported
+
+    tbody
+      tr
+        td Total:
+        td
+          strong = "#{@total / 60}:#{@total % 60}"
+        td
+        td
+        td
+        td
+
+      - @entries.each do |entry|
+        tr
+          td = entry.project.name
+          td = entry.date.strftime("%d/%m/%Y")
+          td = entry.description
+          td = entry.original_id
+          td = entry.exported
+
+      - if @entries.any?
+        tr
+          td Total:
+          td
+            strong = "#{@total / 60}:#{@total % 60}"
+          td
+          td
+          td
+          td
+
+  = render 'pagination'

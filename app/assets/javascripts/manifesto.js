@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
-//= require jquery.ui.autocomplete
-//= require autocomplete-rails
+//= require chosen-jquery
 //= require jquery.tokeninput
 //= require turbolinks
-//= require_tree .
+//= require bootstrap/transition
+//= require bootstrap/alert
+//= require application
+//= require_directory ./forms

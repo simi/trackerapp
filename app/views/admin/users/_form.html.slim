@@ -1,0 +1,34 @@
+.container
+
+  = form_for [:admin, @user], id: 'admin-user-form' do |f|
+
+    - if @entry.errors.any?
+      .alert.alert-danger
+        h2 = "#{pluralize(@entry.errors.count, "error")} prohibited this user from being saved:"
+        ul
+          - @entry.errors.full_messages.each do |message|
+            li = message
+
+    .input-group
+      = f.label :username, 'Username', class: "input-group-addon"
+      = f.text_field :username, class: "form-control"
+
+    .input-group
+      = f.label :email, 'Email', class: "input-group-addon"
+      = f.text_field :email, class: "form-control"
+
+    .input-group
+      = f.label :password, 'Password', class: "input-group-addon"
+      = f.text_field :password, class: "form-control"
+
+    .input-group
+      = f.label :password_confirmation, 'Password confirmation', class: "input-group-addon"
+      = f.text_field :password_confirmation, class: "form-control"
+
+    .input-group
+      = f.label :admin, class: "checkbox" do 
+        = f.check_box :admin, class: "checkbox inline"
+        Admin?
+
+    .inpout-group
+      = f.submit "Save", class: "btn btn-default"

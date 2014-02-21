@@ -1,6 +1,5 @@
 class EntriesController < ApplicationController
   before_filter :require_login
-  autocomplete :project, :name, :full => true
 
   def index
     @from = if params[:from]
@@ -25,7 +24,6 @@ class EntriesController < ApplicationController
 
   def create
     @minutes = TimeParser.new(params[:entry][:time_spent]).minutes rescue nil
-    @project_id = Project.find_by(name: params[:entry][:project_name]).id rescue nil
 
     @entry = Entry.new(entry_params)
     if @entry.save
@@ -47,7 +45,8 @@ class EntriesController < ApplicationController
   private
   def entry_params
     params.require(:entry).
-      permit(:description, :date, :time_spent, :project_name).
-      merge(minutes: @minutes, user_id: current_user.id, project_id: @project_id)
+      permit(:description, :date, :time_spent, :project_id).
+      merge(minutes: @minutes, user_id: current_user.id)
   end
+
 end

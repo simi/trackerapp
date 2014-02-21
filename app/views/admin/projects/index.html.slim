@@ -1,0 +1,22 @@
+= render 'form'
+
+.container
+  table.table
+    thead
+      tr
+        th Name
+        th Assigned users
+        th
+    tbody
+      - @projects.each do |project|
+      tr
+        td = project.name
+        td = project.users.map(&:username).join(",")
+        td
+          .pull-right
+            = link_to admin_project_path(project), class: 'btn btn-default btn-sm' do
+              .glyphicon.glyphicon-zoom-in = View
+            = link_to edit_admin_project_path(project), class: 'btn btn-default btn-sm' do
+              .glyphicon.glyphicon-pencil = Edit
+            = link_to admin_project_path(project), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-default btn-sm' do
+              .glyphicon.glyphicon-trash = Delete

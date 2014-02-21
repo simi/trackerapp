@@ -1,0 +1,37 @@
+.form-inline
+  = form_for @entry, id: 'entry-form' do |f|
+    - if @entry.errors.any?
+      .alert.alert-danger
+        h2 = "#{pluralize(@entry.errors.count, "error")} prohibited this post from being saved:"
+        ul
+          - @entry.errors.full_messages.each do |message|
+            li = message
+
+    .col-lg-2
+      .input-group
+        = f.label :time_spent, 'Time', class: "input-group-addon"
+        = f.text_field :time_spent, placeholder: 'e.g. 1:30, 1.5, 90, 1h', class: "form-control"
+
+    .col-lg-3
+      .input-group
+        = f.label :project_id, 'Project', class: "input-group-addon"
+        = f.collection_select :project_id, current_user.projects, :id, :name, {}, class: "form-control"
+
+    .col-lg-4
+      .input-group
+        = f.label :description, class: "input-group-addon"
+        = f.text_area :description, :rows => "1", class: "form-control"
+
+    .col-lg-2
+      .input-group
+        = f.label :date, class: "input-group-addon"
+        = f.text_field :date, style: "width: 8em;", class: 'datepicker', value: Date.current.strftime("%d/%m/%Y")
+
+    .col-lg-1
+      .input-group
+        = f.submit "Add", class: "btn btn-default"
+
+javascript:
+  $(function() {
+    new EntryForm($('#entry-form'))
+  })

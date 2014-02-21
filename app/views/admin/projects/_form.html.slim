@@ -1,0 +1,30 @@
+.container
+
+  = form_for [:admin, @project], id: 'admin-project-form' do |f|
+
+    - if @project.errors.any?
+      .alert.alert-danger
+        h2 = "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+        ul
+          - @project.errors.full_messages.each do |message|
+            li = message
+
+    .form-inline
+
+      .col-lg-4
+        .input-group
+          = f.label :name, 'Name', class: 'input-group-addon'
+          = f.text_field :name, class: 'form-control'
+
+      .col-lg-5
+       .input-group
+          = f.label :user_tokens, 'Users', class: 'input-group-addon'
+          = f.text_field :user_tokens, class: 'form-control', 'data-pre' => @project.users.map{ |user| {:id => user.id, :name => user.username} }.to_json
+
+      .input-group
+        = f.submit 'Save', class: 'btn btn-default'
+
+javascript:
+  $(function() {
+    new AdminProjectForm($('#admin-project-form'))
+  })

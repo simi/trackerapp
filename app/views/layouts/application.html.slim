@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title Tracker
+    meta name="keywords" content="template language"
+    meta name="author" content="eBallance Creative s.r.o."
+    meta charset="utf-8"
+    = javascript_include_tag 'manifesto'
+    = stylesheet_link_tag 'manifesto'
+    = csrf_meta_tag
+
+  body
+
+    = render 'layouts/navigation'
+
+    .container
+
+      = render 'layouts/flash'
+
+    = yield

@@ -4,8 +4,6 @@ class User < ActiveRecord::Base
   has_many :project_users
   has_many :projects, :through => :project_users
 
-  attr_accessible :username, :email, :password, :password_confirmation
-
   validates_uniqueness_of :email
   validates_uniqueness_of :username
   validates :username, :email, :presence => true, :allow_nil => false
@@ -16,6 +14,10 @@ class User < ActiveRecord::Base
 
   def new_entries
     provider.all
+  end
+
+  def type_in_words
+    admin? ? "Admin" : "Soldier"
   end
 
   private

@@ -1,0 +1,5 @@
+= link_to entries_path(from: @previous_month.to_s(:db)), class: 'btn btn-default' do
+  span.glyphicon.glyphicon-backward = @previous_month.strftime("%B %Y")
+
+= link_to entries_path(from: @next_month.to_s(:db)), class: 'btn btn-default' do
+  span.glyphicon.glyphicon-forward = @next_month.strftime("%B %Y")

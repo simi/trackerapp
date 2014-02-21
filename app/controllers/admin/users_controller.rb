@@ -26,6 +26,7 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_users_path, :notice => "User created."
     else
       index
+      render 'new'
     end
   end
 
