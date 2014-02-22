@@ -1,0 +1,20 @@
+@media (min-width: 768px) {
+  .container {
+    max-width: 830px;
+  }
+}
+
+.navbar {
+
+  .logo {
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+
+    &:hover {
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+}

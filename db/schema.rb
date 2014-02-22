@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129184713) do
+ActiveRecord::Schema.define(version: 20140222175912) do
 
   create_table "entries", force: true do |t|
     t.string   "original_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140129184713) do
     t.datetime "updated_at"
     t.integer  "project_id"
     t.integer  "user_id"
+    t.text     "links"
   end
 
   create_table "project_users", force: true do |t|
@@ -50,8 +51,8 @@ ActiveRecord::Schema.define(version: 20140129184713) do
     t.datetime "updated_at"
     t.string   "remember_me_token"
     t.datetime "remember_me_token_expires_at"
-    t.string   "provider_type"
     t.text     "settings"
+    t.string   "provider_type"
     t.boolean  "admin",                        default: false
   end
 
