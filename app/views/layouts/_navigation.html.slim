@@ -1,8 +1,0 @@
-.navbar
-  .navbar-text = link_to "Track your time", root_path, class: 'logo'
-
-  ul.nav.navbar-nav.user-info.navbar-right
-    - if current_user
-      li = link_to "Log out", logout_path
-    - else
-      li = link_to "log in", login_path

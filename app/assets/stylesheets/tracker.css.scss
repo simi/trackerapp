@@ -1,20 +1,40 @@
+@font-face {
+  font-family: 'monof55';
+  src: url(font-path('monof55.eot'));
+  src: local('☺'), url(font-path('monof55.woff')) format('woff'), url(font-path('monof55.ttf')) format('truetype'), url(font-path('monof55.svg')) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @media (min-width: 768px) {
   .container {
     max-width: 830px;
   }
 }
 
-.navbar {
+body {
+  font-family: 'monof55', Verdana;
+  background: #CECECE;
+}
 
-  .logo {
-    color: black;
-    font-size: 22px;
+.form-box {
+  position: relative;
+  margin-top: 40px;
+  padding: 20px;
+  border: 2px solid #979797;
+  border-radius: 15px;
+  background: white;
+
+  h1 {
+    position: absolute;
+    top: -33px;
+    left: 40px;
+    font-size: 14px;
+    color: #979797;
+    background: #D8D8D8;
+    border-radius: 15px;
+    border: 2px solid #979797;
+    padding: 5px 10px;
     font-weight: bold;
-
-    &:hover {
-      color: black;
-      text-decoration: none;
-    }
   }
-
 }

@@ -1,4 +1,7 @@
-.form-inline
+.form-inline.form-box
+
+  h1 track your time
+
   = form_for @entry, id: 'entry-form', class: 'form-inline', role: 'form' do |f|
 
     = render 'layouts/errors', object: @entry
