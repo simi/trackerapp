@@ -11,11 +11,11 @@ class EntriesController < ApplicationController
     @previous_month = (@from - 1.month).at_beginning_of_month
     @next_month = (@from + 1.month).at_beginning_of_month
 
-    @entries = Entry.where(user_id: current_user.id).where('date >= ?', @from).where('date < ?', @next_month).order('date desc')
+    @entries = Entry.for_user(current_user).between(@from, @next_month).by_date
     @total = @entries.sum(:minutes)
 
     @entry ||= Entry.new
-
+    @entry.project = current_user.entries.by_date.first.try(:project)
   end
 
   def new

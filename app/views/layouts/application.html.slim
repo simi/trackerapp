@@ -3,12 +3,12 @@ html
   head
     title Tracker
     meta charset="utf-8"
-    meta name="keywords" content="template language"
     meta name="author" content="eBallance Creative s.r.o."
     meta http-equiv="X-UA-Compatible" content="IE=edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    = javascript_include_tag 'manifesto'
-    = stylesheet_link_tag 'manifesto'
+    = include_jquery
+    = javascript_include_tag 'application-bundle'
+    = stylesheet_link_tag 'application-bundle'
     = csrf_meta_tag
 
   body

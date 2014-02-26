@@ -17,10 +17,10 @@ gem 'httparty'
 gem 'letsfreckle-client', require: 'letsfreckle'
 
 # javascripts
-gem 'jquery-rails'
-gem 'turbolinks'
-gem 'jquery-tokeninput-rails'
-gem 'chosen-rails'
+gem 'jquery-cdn'
+gem 'pickadate-rails'
+# gem 'jquery_ujs' or # gem 'rails_behaviors'
+# gem 'turbolinks'
 
 group :development do
   gem 'better_errors'

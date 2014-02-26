@@ -10,12 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require chosen-jquery
-//= require jquery.tokeninput
-//= require turbolinks
-//= require bootstrap/transition
-//= require bootstrap/alert
 //= require application
+//= require bootstrap/alert
+//= require pickadate/picker
+//= require pickadate/picker.date
+//= # require pickadate/translations/cs_CZ
 //= require_directory ./forms

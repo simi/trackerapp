@@ -2,30 +2,30 @@
 
   h1 track your time
 
-  = form_for @entry, id: 'entry-form', class: 'form-inline', role: 'form' do |f|
+  = form_for @entry, html: { id: 'entry-form', class: 'form-inline' }, role: 'form' do |f|
 
     = render 'layouts/errors', object: @entry
 
     .row
-      .col-sm-4.form-group
-        = f.text_field :time_spent, placeholder: 'E.g. 1:30, 1.5, 90, 1h', class: "form-control"
 
-      .col-sm-4.form-group  
-        = f.collection_select :project_id, current_user.projects, :id, :name, {}, class: "form-control"
+      .col-sm-11
+        .col-sm-4.form-group
+          = f.text_field :time_spent, placeholder: '1:30, 1.5, 90, 1h', class: "form-control"
 
-      .col-sm-3
-        = f.text_field :date, style: "width: 8em;", class: 'datepicker', value: Date.current.strftime("%d/%m/%Y")
+        .col-sm-4.form-group
+          = f.collection_select :project_id, current_user.projects, :id, :name, {}, class: "form-control"
 
-      .col-sm-1
-        = f.submit "Add", class: "btn btn-default"
+        .col-sm-4.form-group
+          = text_field_tag :date, "Today (change &raquo;)".html_safe, class: 'datepicker'
 
-      .col-sm-5
-        = f.text_area :description, :rows => "1", class: "form-control"
+        .col-sm-6
+          = f.text_area :description, rows: "2", placeholder: "Description", class: "form-control"
 
-      .col-sm-6
-        = f.text_area :links, :rows => "1", class: "form-control"
+        .col-sm-6
+          = f.text_area :links, rows: "2", placeholder: "Task URL", class: "form-control"
 
-      .col-sm-1
+      .col-sm-1.btn-container
+        = f.submit "Add", class: "btn btn-default form-control"
 
 javascript:
   $(function() {

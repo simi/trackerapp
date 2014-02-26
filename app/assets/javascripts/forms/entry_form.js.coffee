@@ -5,7 +5,7 @@ class @EntryForm
 
   initDatepicker: ->
     configuration = {
-      showButtonPanel: true,
-      dateFormat: 'dd/mm/yy'
+      formatSubmit: 'dd/mm/yyyy'
     }
-    @form.find('.datepicker').datepicker(configuration)
+    picker = @form.find('.datepicker').pickadate(configuration).pickadate('picker')
+    $(picker._hidden).attr('name', 'entry[date]').attr('id', 'entry_id')
