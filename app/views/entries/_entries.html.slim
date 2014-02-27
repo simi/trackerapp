@@ -1,8 +1,8 @@
-.container
+.box
 
-  = render 'pagination'
+  h1 Entries
 
-  h2 = @from.strftime("%B %Y")
+  = render 'pagination', position: 'top'
 
   table.table
     thead
@@ -24,13 +24,17 @@
         td
         td
 
-      - @entries.each do |entry|
+      - @entries.group_by(&:date).each do |date, entries|
         tr
-          td = entry.project.name
-          td = entry.date.strftime("%d/%m/%Y")
-          td = entry.description
-          td = entry.original_id
-          td = entry.exported
+          td colspan="5" = I18n.l(date, format: :long)
+
+        - entries.each do |entry|
+          tr
+            td = entry.project.name
+            td = entry.date.strftime("%d/%m/%Y")
+            td = entry.description
+            td = entry.original_id
+            td = entry.exported
 
       - if @entries.any?
         tr
@@ -42,4 +46,4 @@
           td
           td
 
-  = render 'pagination'
+  = render 'pagination', position: 'bottom'

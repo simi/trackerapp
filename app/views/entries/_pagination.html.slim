@@ -1,5 +1,8 @@
-= link_to entries_path(from: @previous_month.to_s(:db)), class: 'btn btn-default' do
-  span.glyphicon.glyphicon-backward = @previous_month.strftime("%B %Y")
+div class="pagination-#{position}"
+  = link_to entries_path(from: @previous_month.to_s(:db)), class: 'btn-box' do
+    = @previous_month.strftime("%B")
 
-= link_to entries_path(from: @next_month.to_s(:db)), class: 'btn btn-default' do
-  span.glyphicon.glyphicon-forward = @next_month.strftime("%B %Y")
+  span.btn-box = @from.strftime("%B")
+
+  = link_to entries_path(from: @next_month.to_s(:db)), class: 'btn-box' do
+    = @next_month.strftime("%B")

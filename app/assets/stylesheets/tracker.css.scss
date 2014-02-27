@@ -13,28 +13,29 @@
 }
 
 body {
+  padding-bottom: 30px;
   font-family: 'monof55', Verdana;
   background: #CECECE;
 }
 
-.form-box {
+.box {
   position: relative;
   margin-top: 40px;
-  padding: 20px;
   border: 2px solid #979797;
   border-radius: 15px;
+  padding: 20px;
   background: white;
 
   h1 {
     position: absolute;
     top: -33px;
     left: 23px;
-    font-size: 14px;
-    color: #979797;
-    background: #D8D8D8;
     border-radius: 15px;
     border: 2px solid #979797;
     padding: 5px 10px;
+    font-size: 14px;
+    color: #979797;
+    background: #D8D8D8;
     font-weight: bold;
   }
 
@@ -52,6 +53,39 @@ body {
     }
   }
 
+  .btn-box {
+    margin: 0 10px;
+    border-radius: 15px;
+    border: 2px solid #979797;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #979797;
+    background: #D8D8D8;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: none;
+      background: white;
+
+    }
+  }
+
+  span.btn-box {
+    background: white;
+  }
+
+  .pagination-top {
+    position: absolute;
+    top: -11px;
+    right: 20px;
+  }
+
+  .pagination-bottom {
+    position: absolute;
+    bottom: -11px;
+    right: 20px;
+  }
+
   #entry-form {
     .form-control {
       margin: 10px 0;
@@ -67,13 +101,14 @@ body {
       margin-top: 10px;
       border: none;
       font-size: 18px;
+      text-align: center;
       cursor: pointer;
     }
 
     .btn-container {
       @media (min-width: $screen-sm-min) {
-        padding-left: 0;
         margin-left: -10px;
+        padding-left: 0;
       }
 
       .btn {
