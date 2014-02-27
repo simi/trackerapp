@@ -54,17 +54,16 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @from = if params[:from]
-      Date.strptime(params[:from], '%d/%m/%Y')
-    else
-      Date.new(Date.today.year, Date.today.month, 1)
-    end
+    @from = if params[:from].present?
+              Date.parse(params[:from])
+            else
+              Date.new(Date.current.year, Date.current.month, 1)
+            end
 
     @previous_month = (@from - 1.month).at_beginning_of_month
     @next_month = (@from + 1.month).at_beginning_of_month
 
-    @entries = @user.entries.where('date >= ?', @from).where('date < ?', @next_month).order('date desc')
-
+    @entries = Entry.for_user(@user).between(@from, @next_month).by_date
     @total = @entries.sum(:minutes)
   end
 

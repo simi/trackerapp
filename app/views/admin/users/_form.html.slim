@@ -1,13 +1,10 @@
-.container
+.box
+
+  h1 New user
 
   = form_for [:admin, @user], id: 'admin-user-form' do |f|
 
-    - if @entry.errors.any?
-      .alert.alert-danger
-        h2 = "#{pluralize(@entry.errors.count, "error")} prohibited this user from being saved:"
-        ul
-          - @entry.errors.full_messages.each do |message|
-            li = message
+    = render 'layouts/errors', object: @user
 
     .input-group
       = f.label :username, 'Username', class: "input-group-addon"
