@@ -11,8 +11,4 @@ class Entry < ActiveRecord::Base
   scope :between, ->(from, to) { where(date: from..to) }
   scope :by_date, -> { order('date asc') }
 
-  def formatted_minutes
-    "#{self.minutes / 60}: #{self.minutes % 60}"
-  end
-
 end

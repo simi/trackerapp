@@ -6,44 +6,32 @@
 
   table.table
     thead
-      tr
-        th project
-        th time
-        th at
-        th description
-        th original_id
-        th exported
+      tr.summary
+        th = formatted_minutes(@total, legend: true)
+        th
+        th = @from.strftime("%B, %Y")
 
     tbody
-      tr
-        td Total:
-        td
-          strong = "#{@total / 60}:#{@total % 60}"
-        td
-        td
-        td
-        td
-
-      - @entries.group_by(&:date).each do |date, entries|
-        tr
-          td colspan="5" = I18n.l(date, format: :long)
+      - @entries.group_by(&:date).sort.reverse.each do |date, entries|
+        tr.day
+          td colspan="2" = formatted_minutes(entries.sum(&:minutes))
+          td = I18n.l(date, format: :long)
+          
 
         - entries.each do |entry|
           tr
+            td = formatted_minutes(entry.minutes)
             td = entry.project.name
-            td = entry.date.strftime("%d/%m/%Y")
             td = entry.description
-            td = entry.original_id
-            td = entry.exported
 
-      - if @entries.any?
-        tr
-          td Total:
-          td
-            strong = "#{@total / 60}:#{@total % 60}"
-          td
-          td
-          td
-          td
+    - if @entries.any?
+      tfoot
+        tr.summary
+          th = formatted_minutes(@total, legend: true)
+          th
+          th = @from.strftime("%B, %Y")
+
+
+
 
   = render 'pagination', position: 'bottom'

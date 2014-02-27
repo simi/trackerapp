@@ -86,6 +86,32 @@ body {
     right: 20px;
   }
 
+  .table {
+    tbody tr:first-child td {
+      border-top: 0;
+    }
+
+    .day td {
+      padding-top: 30px;
+      font-weight: bold;
+      border-bottom: 1px solid #333333;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    .summary {
+      th {
+        border: 0;
+
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+
   #entry-form {
     .form-control {
       margin: 10px 0;
