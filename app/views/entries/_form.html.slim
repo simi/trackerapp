@@ -2,9 +2,9 @@
 
   h1 track your time
 
-  = form_for @entry, html: { id: 'entry-form', class: 'form-inline' }, role: 'form' do |f|
+  = form_for @entry_form, url: entries_path, html: { id: 'entry-form', class: 'form-inline' }, role: 'form' do |f|
 
-    = render 'layouts/errors', object: @entry
+    = render 'layouts/errors', object: @entry_form
 
     .row
 
@@ -16,7 +16,7 @@
           = f.collection_select :project_id, current_user.projects, :id, :name, {}, class: "form-control"
 
         .col-sm-4.form-group
-          = text_field_tag :date, "Today (change &raquo;)".html_safe, class: 'datepicker'
+          = text_field_tag :date, @entry_form.date_in_words, class: 'datepicker'
 
         .col-sm-6
           = f.text_area :description, rows: "2", placeholder: "Description", class: "form-control"

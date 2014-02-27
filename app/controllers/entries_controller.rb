@@ -14,27 +14,16 @@ class EntriesController < ApplicationController
     @entries = Entry.for_user(current_user).between(@from, @next_month).by_date
     @total = @entries.sum(:minutes)
 
-    @entry ||= Entry.new
-    @entry.project = current_user.entries.by_date.first.try(:project)
+    @entry_form ||= EntryForm.new
   end
 
   def new
-    @entry = Entry.new
+    @entry_form = EntryForm.new
   end
 
   def create
-    @minutes = TimeParser.new(params[:entry][:time_spent]).minutes rescue nil
-
-    @entry = Entry.new(entry_params)
-    if @entry.save
-
-      if not @entry.project.users.include?(current_user)
-        project_user = ProjectUser.new
-        project_user.user_id = current_user.id
-        project_user.project_id = @entry.project_id
-        project_user.save
-      end
-
+    @entry_form = EntryForm.new(entry_form_params)
+    if @entry_form.submit
       redirect_to entries_path, :notice => "Entry created."
     else
       index
@@ -43,10 +32,10 @@ class EntriesController < ApplicationController
   end
 
   private
-  def entry_params
-    params.require(:entry).
+  def entry_form_params
+    params.require(:entry_form).
       permit(:description, :date, :time_spent, :project_id).
-      merge(minutes: @minutes, user_id: current_user.id)
+      merge(user_id: current_user.id)
   end
 
 end

@@ -2,8 +2,6 @@ class Entry < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
-  attr_accessor :time_spent
-
   validates :date, presence: true
   validates :project, presence: true
   validates :user, presence: true

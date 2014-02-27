@@ -38,13 +38,29 @@ body {
     font-weight: bold;
   }
 
-  
+  .alert {
+    margin-top: 10px;
+
+    h2 {
+      margin-top: 0;
+      font-size: 14px;
+    }
+
+    li {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
 
   #entry-form {
     .form-control {
       margin: 10px 0;
       width: 100%;
       font-size: 18px;
+    }
+
+    #entry_time_spent {
+      text-align: center;
     }
 
     .datepicker {
@@ -68,5 +84,4 @@ body {
       }
     }
   }
-
 }
