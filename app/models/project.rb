@@ -6,10 +6,4 @@ class Project < ActiveRecord::Base
 
   validates :name, :presence => true, :allow_nil => false
 
-  attr_reader :user_tokens
-
-  def user_tokens=(ids)
-    self.user_ids = ids.split(",").uniq
-  end
-
 end

@@ -1,12 +1,4 @@
-class Admin::ProjectsController < ApplicationController
-  before_action :require_admin
-
-  def index
-    @projects = Project.all
-    @users = User.all
-
-    @project ||= Project.new
-  end
+class Admin::ProjectsController < Admin::ApplicationController
 
   def new
     @project = Project.new
@@ -15,10 +7,9 @@ class Admin::ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 
-    if @project.save
-      redirect_to admin_projects_path, :notice => "Project created."
+    if @project_form.submit
+      redirect_to admin_path, :notice => "Project created."
     else
-      index
       render :index
     end
   end
@@ -29,9 +20,10 @@ class Admin::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-
-    if @project.update(project_params)
-      redirect_to admin_projects_path, :notice => "Project updated."
+    #@user_ids = project_params[:user_ids].map(&:present)
+    
+    if @project.update(project_params)# && @project.user_ids = @user_ids
+      redirect_to admin_path, :notice => "Project updated."
     else
       render 'edit'
     end
@@ -41,7 +33,7 @@ class Admin::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to admin_projects_path
+    redirect_to admin_path, :notice => "Project destroyed."
   end
 
   def show
@@ -63,13 +55,7 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :user_tokens)
+    params.require(:project).permit!
   end
 
-  def require_admin
-    unless current_user.admin?
-      flash[:error] = "You must be admin to access this section"
-      redirect_to root_url
-    end
-  end
 end

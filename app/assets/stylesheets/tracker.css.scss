@@ -30,7 +30,8 @@ body {
 }
 
 .topnav {
-  float: right;
+  position: absolute;
+  right: 8px;
 
   a {
     margin-left: 8px;

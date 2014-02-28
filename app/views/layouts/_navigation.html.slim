@@ -5,7 +5,11 @@
 
     - if current_user.admin?
       = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: 'Administration' do
-        span.icon-edit
+        span.icon-users
 
-    = link_to logout_path, class: "nav-item", title: 'Logout' do
+    / - if current_user.admin?
+    /   = link_to admin_path, class: "nav-item #{nav_item_class('settings')}", title: 'Settings' do
+    /     span.icon-edit
+
+    = link_to logout_path, class: "nav-item", title: "Logout, #{current_user.username}" do
       span.icon-turnoff

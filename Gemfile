@@ -18,8 +18,10 @@ gem 'letsfreckle-client', require: 'letsfreckle'
 
 # javascripts
 gem 'jquery-cdn'
+gem 'rails-behaviors'
 gem 'pickadate-rails'
-# gem 'jquery_ujs' or # gem 'rails_behaviors'
+gem 'select2-rails'
+# gem 'jquery_ujs' or # 
 # gem 'turbolinks'
 
 group :development do

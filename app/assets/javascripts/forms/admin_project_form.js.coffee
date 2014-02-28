@@ -1,14 +1,10 @@
 class @AdminProjectForm
 
   constructor: (@form) ->
-    initTokenInput()
+    @initSelect2()
 
-  @initTokenInput: ->
-    input = @form.find("#project_user_tokens")
+  initSelect2: ->
+    input = @form.find("#project_user_ids")
     configuration = {
-      crossDomain: false,
-      prePopulate: input.data("pre"),
-      theme: "facebook",
-      minChars: 0
     }
-    input.tokenInput("/admin/users.json", configuration)
+    input.select2()

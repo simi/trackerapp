@@ -1,16 +1,4 @@
-class Admin::UsersController < ApplicationController
-  before_action :require_admin
-
-  def index
-    @users = User.where("username like ?", "%#{params[:q]}%")
-
-    @user ||= User.new
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @users.map { |user| {:id => user.id, :name => user.username} }}
-    end
-  end
+class Admin::UsersController < Admin::ApplicationController
 
   def new
     @user = User.new
@@ -23,9 +11,8 @@ class Admin::UsersController < ApplicationController
     end
 
     if @user.save
-      redirect_to admin_users_path, :notice => "User created."
+      redirect_to admin_path, :notice => "User created."
     else
-      index
       render 'new'
     end
   end
@@ -38,7 +25,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_users_path, :notice => "User updated."
+      redirect_to admin_path, :notice => "User updated."
     else
       render 'edit'
     end
@@ -48,7 +35,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to admin_users_path
+    redirect_to admin_path
   end
 
   def show
@@ -73,10 +60,4 @@ class Admin::UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
-  def require_admin
-    unless current_user.admin?
-      flash[:error] = "You must be admin to access this section"
-      redirect_to root_url
-    end
-  end
 end

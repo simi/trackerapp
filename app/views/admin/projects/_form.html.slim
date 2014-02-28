@@ -1,28 +1,21 @@
-.container
+= form_for [:admin, @project], html: { id: 'admin-project-form', class: 'form-horizontal' } do |f|
 
-  = form_for [:admin, @project], id: 'admin-project-form' do |f|
+  = render 'layouts/errors', object: @project
 
-    - if @project.errors.any?
-      .alert.alert-danger
-        h2 = "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
-        ul
-          - @project.errors.full_messages.each do |message|
-            li = message
+  .form-group
+    = f.label :name, 'Name', class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :name, class: 'form-control'
 
-    .form-inline
+  .form-group
+    = f.label :users, 'Users', class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.collection_select :user_ids, User.all, :id, :username, { include_blank: true }, { multiple: true, class: 'form-control'}
 
-      .col-lg-4
-        .input-group
-          = f.label :name, 'Name', class: 'input-group-addon'
-          = f.text_field :name, class: 'form-control'
+  .form-group
+    .col-sm-offset-4.col-sm-4
+      = f.submit "Save", class: 'btn btn-default'
 
-      .col-lg-5
-       .input-group
-          = f.label :user_tokens, 'Users', class: 'input-group-addon'
-          = f.text_field :user_tokens, class: 'form-control', 'data-pre' => @project.users.map{ |user| {:id => user.id, :name => user.username} }.to_json
-
-      .input-group
-        = f.submit 'Save', class: 'btn btn-default'
 
 javascript:
   $(function() {

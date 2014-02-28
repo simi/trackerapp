@@ -11,7 +11,7 @@ Trackerapp::Application.routes.draw do
   end
 
   namespace :admin do
-    get '/', :to => redirect("/admin/users")
+    get '/' => "admin#index"
     resources :projects
     resources :users
   end

@@ -1,31 +1,35 @@
-.box
 
-  h1 New user
+= form_for [:admin, @user], html: { id: 'admin-user-form', class: 'form-horizontal'} do |f|
 
-  = form_for [:admin, @user], id: 'admin-user-form' do |f|
+  = render 'layouts/errors', object: @user
 
-    = render 'layouts/errors', object: @user
+  .form-group
+    = f.label :username, 'Username', class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :username, class: 'form-control'
 
-    .input-group
-      = f.label :username, 'Username', class: "input-group-addon"
-      = f.text_field :username, class: "form-control"
+  .form-group
+    = f.label :email, 'Email', class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :email, class: 'form-control'
 
-    .input-group
-      = f.label :email, 'Email', class: "input-group-addon"
-      = f.text_field :email, class: "form-control"
+  .form-group
+    = f.label :password, 'Password', class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.password_field :password, class: 'form-control'
 
-    .input-group
-      = f.label :password, 'Password', class: "input-group-addon"
-      = f.text_field :password, class: "form-control"
+  .form-group
+    = f.label :password_confirmation, 'Password confirmation', class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.password_field :password_confirmation, class: 'form-control'
 
-    .input-group
-      = f.label :password_confirmation, 'Password confirmation', class: "input-group-addon"
-      = f.text_field :password_confirmation, class: "form-control"
+    .form-group
+      .col-sm-offset-4.col-sm-4
+        .checkbox
+          label
+            = check_box_tag :admin, 0, params[:admin]
+            | Admin?
 
-    .input-group
-      = f.label :admin, class: "checkbox" do 
-        = f.check_box :admin, class: "checkbox inline"
-        Admin?
-
-    .inpout-group
-      = f.submit "Save", class: "btn btn-default"
+  .form-group
+    .col-sm-offset-4.col-sm-4
+      = f.submit "Save", class: 'btn btn-default'
