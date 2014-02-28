@@ -1,16 +1,25 @@
-.container
-  = form_tag sessions_path do
-    .field
-      = label_tag :username
-      = text_field_tag :username, params[:username]
+.box
+  h1 Login
 
-    .field
-      = label_tag :password
-      = text_field_tag :password, params[:password]
+  = form_tag sessions_path, class: 'form-horizontal' do
 
-    .field
-      = check_box_tag :remember_me, 1, params[:remember_me]
-      = label_tag :remember_me
+    .form-group
+      = label_tag :username, 'Email', class: 'col-sm-4 control-label'
+      .col-sm-4
+        = text_field_tag :username, params[:username], class: 'form-control'
 
-    .actions
-      = submit_tag "Log in"
+    .form-group
+      = label_tag :password, 'Password', class: 'col-sm-4 control-label'
+      .col-sm-4
+        = password_field_tag :password, params[:password], class: 'form-control'
+
+    .form-group
+      .col-sm-offset-4.col-sm-4
+        .checkbox
+          label
+            = check_box_tag :remember_me, 1, params[:remember_me]
+            | Remember me
+
+    .form-group
+      .col-sm-offset-4.col-sm-4
+        = submit_tag "Log in", class: 'btn btn-default'

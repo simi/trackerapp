@@ -1,0 +1,11 @@
+.topnav
+  - if logged_in?
+    = link_to root_path, class: "nav-item #{nav_item_class('root')}", title: 'Track time' do
+      span.icon-user
+
+    - if current_user.admin?
+      = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: 'Administration' do
+        span.icon-edit
+
+    = link_to logout_path, class: "nav-item", title: 'Logout' do
+      span.icon-turnoff
