@@ -19,10 +19,14 @@
           
 
         - entries.each do |entry|
-          tr
+          tr.entry
             td = formatted_minutes(entry.minutes)
             td = entry.project.name
-            td = entry.description
+            td
+              = entry.description
+              span.actions
+                = link_to entry_path(entry), data: { confirm: 'Are you sure?', method: 'delete' }, class: 'btn btn-default btn-sm' do
+                  .glyphicon.glyphicon-trash
 
     - if @entries.any?
       tfoot

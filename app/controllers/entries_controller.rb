@@ -31,6 +31,13 @@ class EntriesController < ApplicationController
     end
   end
 
+  def destroy
+    @entry = Entry.find(params[:id])
+    @entry.destroy
+
+    redirect_to root_path, :notice => "Entry destroyed."
+  end
+
   private
   def entry_form_params
     params.require(:entry_form).

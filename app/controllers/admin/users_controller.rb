@@ -35,7 +35,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to admin_path
+    redirect_to admin_path, :notice => "User destroyed."
   end
 
   def show

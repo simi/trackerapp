@@ -138,6 +138,27 @@ body {
       }
     }
 
+    .entry {
+
+      &:hover {
+        td:last-child {
+          position:relative;
+        }
+        .actions {
+          display: block;
+        }
+      }
+
+      .actions {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: white;
+        padding: 3px 10px;
+      }
+    }
+
     .summary {
       th {
         border: 0;
