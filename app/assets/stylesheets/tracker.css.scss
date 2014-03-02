@@ -111,16 +111,16 @@ body {
     background: white;
   }
 
-  .pagination-top {
+  .box-nav {
     position: absolute;
     top: -11px;
     right: 20px;
-  }
 
-  .pagination-bottom {
-    position: absolute;
-    bottom: -11px;
-    right: 20px;
+    &.pagination-bottom {
+      top: inherit;
+      bottom: -11px;
+      right: 20px;
+    }
   }
 
   .table {

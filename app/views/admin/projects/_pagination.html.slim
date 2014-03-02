@@ -1,4 +1,4 @@
-div class="pagination-#{position}"
+div class="box-nav pagination-#{position}"
 
   = link_to admin_project_path(@project, from: @previous_month.to_s(:db)), class: 'btn-box' do
     = @previous_month.strftime("%B")

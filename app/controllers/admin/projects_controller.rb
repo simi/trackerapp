@@ -7,7 +7,7 @@ class Admin::ProjectsController < Admin::ApplicationController
   def create
     @project = Project.new(project_params)
 
-    if @project_form.submit
+    if @project.save
       redirect_to admin_path, :notice => "Project created."
     else
       render :index
@@ -20,9 +20,8 @@ class Admin::ProjectsController < Admin::ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    #@user_ids = project_params[:user_ids].map(&:present)
     
-    if @project.update(project_params)# && @project.user_ids = @user_ids
+    if @project.update(project_params)
       redirect_to admin_path, :notice => "Project updated."
     else
       render 'edit'

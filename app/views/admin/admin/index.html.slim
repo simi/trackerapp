@@ -2,6 +2,10 @@
 
   h1 Users
 
+  .box-nav
+    = link_to new_admin_user_path, class: 'btn-box' do
+      span.glyphicon-plus Add user
+
   table.table
     thead
       tr
@@ -27,6 +31,10 @@
 .box
 
   h1 Projects
+
+  .box-nav
+    = link_to new_admin_project_path, class: 'btn-box' do
+      span.glyphicon-plus Add project
 
   table.table
 
