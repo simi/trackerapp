@@ -1,5 +1,9 @@
-= link_to admin_project_path(@project, from: @previous_month.to_s(:db)), class: 'btn btn-default' do
-  span.glyphicon.glyphicon-backward = @previous_month.strftime("%B %Y")
+div class="pagination-#{position}"
 
-= link_to admin_project_path(@project, from: @next_month.to_s(:db)), class: 'btn btn-default pull-right' do
-  span.glyphicon.glyphicon-backward = @next_month.strftime("%B %Y")
+  = link_to admin_project_path(@project, from: @previous_month.to_s(:db)), class: 'btn-box' do
+    = @previous_month.strftime("%B")
+
+  span.btn-box = @from.strftime("%B")
+
+  = link_to admin_project_path(@project, from: @next_month.to_s(:db)), class: 'btn-box' do
+    = @next_month.strftime("%B")

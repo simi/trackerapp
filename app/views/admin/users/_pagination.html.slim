@@ -1,4 +1,5 @@
 div class="pagination-#{position}"
+
   = link_to admin_user_path(@user, from: @previous_month.to_s(:db)), class: 'btn-box' do
     = @previous_month.strftime("%B")
 

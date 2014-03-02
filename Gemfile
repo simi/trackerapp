@@ -21,7 +21,6 @@ gem 'jquery-cdn'
 gem 'rails-behaviors'
 gem 'pickadate-rails'
 gem 'select2-rails'
-# gem 'jquery_ujs' or # 
 # gem 'turbolinks'
 
 group :development do
