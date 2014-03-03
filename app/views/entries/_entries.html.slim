@@ -7,16 +7,13 @@
   table.table
     thead
       tr.summary
-        th = formatted_minutes(@total, legend: true)
-        th
-        th = @from.strftime("%B, %Y")
+        th colspan=3 = formatted_minutes(@total, legend: true)
 
     tbody
       - @entries.group_by(&:date).sort.reverse.each do |date, entries|
-        tr.day
+        tr.day-summary
           td colspan="2" = formatted_minutes(entries.sum(&:minutes))
           td = I18n.l(date, format: :long)
-          
 
         - entries.each do |entry|
           tr.entry
@@ -31,11 +28,6 @@
     - if @entries.any?
       tfoot
         tr.summary
-          th = formatted_minutes(@total, legend: true)
-          th
-          th = @from.strftime("%B, %Y")
-
-
-
+          th colspan=3 = formatted_minutes(@total, legend: true)
 
   = render 'pagination', position: 'bottom'

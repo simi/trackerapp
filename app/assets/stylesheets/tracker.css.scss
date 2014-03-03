@@ -1,12 +1,4 @@
 @font-face {
-  font-family: 'monof55';
-  src: url(font-path('monof55.eot'));
-  src: local('☺'), url(font-path('monof55.woff')) format('woff'), url(font-path('monof55.ttf')) format('truetype'), url(font-path('monof55.svg')) format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'icon-font';
   src:url(font-path('icon-font.eot'));
   src:url(font-path('icon-font.eot')) format('embedded-opentype'),
@@ -25,7 +17,7 @@
 
 body {
   padding-bottom: 30px;
-  font-family: 'monof55', Verdana;
+  font-family: 'Average Sans', Verdana;
   background: #CECECE;
 }
 
@@ -36,7 +28,6 @@ body {
   a {
     margin-left: 8px;
     border: 2px solid #979797;
-    border-radius: 5px;
     padding: 4px 4px 4px 4px;
     font-size: 20px;
     background: white;
@@ -59,7 +50,7 @@ body {
   position: relative;
   margin-top: 40px;
   border: 2px solid #979797;
-  border-radius: 15px;
+  
   padding: 20px;
   background: white;
 
@@ -67,13 +58,13 @@ body {
     position: absolute;
     top: -33px;
     left: 23px;
-    border-radius: 15px;
+    border-radius: 3px;
     border: 2px solid #979797;
     padding: 5px 10px;
-    font-size: 14px;
+    font-size: 15px;
     color: #979797;
     background: #D8D8D8;
-    font-weight: bold;
+    font-family: 'Fjalla One', Georgia, serif;
   }
 
   .alert {
@@ -90,27 +81,6 @@ body {
     }
   }
 
-  .btn-box {
-    margin: 0 10px;
-    border-radius: 15px;
-    border: 2px solid #979797;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #979797;
-    background: #D8D8D8;
-    font-weight: bold;
-
-    &:hover {
-      text-decoration: none;
-      background: white;
-
-    }
-  }
-
-  span.btn-box {
-    background: white;
-  }
-
   .box-nav {
     position: absolute;
     top: -11px;
@@ -121,14 +91,36 @@ body {
       bottom: -11px;
       right: 20px;
     }
+
+    .btn-box {
+      margin: 0 10px;
+      border-radius: 3px;
+      border: 2px solid #979797;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: #979797;
+      background: #D8D8D8;
+      font-family: 'Fjalla One', Georgia, serif;
+
+      &:hover {
+        text-decoration: none;
+        background: white;
+
+      }
+    }
+
+    span.btn-box {
+      background: white;
+    }
   }
 
   .table {
+
     tbody tr:first-child td {
       border-top: 0;
     }
 
-    .day td {
+    .day-summary td {
       padding-top: 30px;
       font-weight: bold;
       border-bottom: 1px solid #333333;
@@ -174,7 +166,7 @@ body {
     .form-control {
       margin: 10px 0;
       width: 100%;
-      font-size: 18px;
+      font-size: 14px;
     }
 
     #entry_time_spent {
@@ -182,9 +174,9 @@ body {
     }
 
     .datepicker {
-      margin-top: 10px;
+      margin-top: 14px;
       border: none;
-      font-size: 18px;
+      font-size: 16px;
       text-align: center;
       cursor: pointer;
     }
@@ -197,7 +189,7 @@ body {
 
       .btn {
         @media (min-width: $screen-sm-min) {
-          height: 117px;
+          height: 110px;
           width: 60px;
         }
       }
