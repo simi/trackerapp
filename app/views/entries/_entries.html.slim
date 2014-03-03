@@ -7,7 +7,7 @@
   table.table
     thead
       tr.summary
-        th colspan=3 = formatted_minutes(@total, legend: true)
+        th colspan=3 = "Total: #{formatted_minutes(@total, legend: true)}"
 
     tbody
       - @entries.group_by(&:date).sort.reverse.each do |date, entries|

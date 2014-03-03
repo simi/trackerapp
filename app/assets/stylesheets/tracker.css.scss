@@ -18,6 +18,7 @@
 body {
   padding-bottom: 30px;
   font-family: 'Average Sans', Verdana;
+  color: $gray;
   background: #CECECE;
 }
 
@@ -27,7 +28,8 @@ body {
 
   a {
     margin-left: 8px;
-    border: 2px solid #979797;
+    border: 1px solid $gray-lighter;
+    border-radius: 3px;
     padding: 4px 4px 4px 4px;
     font-size: 20px;
     background: white;
@@ -40,7 +42,8 @@ body {
     &.active {
       position: relative;
       top: -9px;
-      background: #D8D8D8;
+      background: $gray-lighter;
+      border: none;
     }
 
   }
@@ -49,7 +52,7 @@ body {
 .box {
   position: relative;
   margin-top: 40px;
-  border: 2px solid #979797;
+  border: 1px solid #979797;
   
   padding: 20px;
   background: white;
@@ -59,10 +62,10 @@ body {
     top: -33px;
     left: 23px;
     border-radius: 3px;
-    border: 2px solid #979797;
+    border: 1px solid #979797;
     padding: 5px 10px;
-    font-size: 15px;
-    color: #979797;
+    font-size: 13px;
+    color: $gray;
     background: #D8D8D8;
     font-family: 'Fjalla One', Georgia, serif;
   }
@@ -84,7 +87,7 @@ body {
   .box-nav {
     position: absolute;
     top: -11px;
-    right: 20px;
+    right: 10px;
 
     &.pagination-bottom {
       top: inherit;
@@ -95,10 +98,10 @@ body {
     .btn-box {
       margin: 0 10px;
       border-radius: 3px;
-      border: 2px solid #979797;
+      border: 1px solid #979797;
       padding: 5px 10px;
-      font-size: 14px;
-      color: #979797;
+      font-size: 13px;
+      color: $gray;
       background: #D8D8D8;
       font-family: 'Fjalla One', Georgia, serif;
 
@@ -131,6 +134,7 @@ body {
     }
 
     .entry {
+      color: $gray-dark;
 
       &:hover {
         td:last-child {
@@ -156,7 +160,7 @@ body {
         border: 0;
 
         &:last-child {
-          text-align: right;
+          text-align: left;
         }
       }
     }
