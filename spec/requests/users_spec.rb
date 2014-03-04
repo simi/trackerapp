@@ -15,10 +15,10 @@ describe "User" do
     project_user.save
 
     visit "/"
-    fill_in 'username', with: @admin_user.username
+    fill_in 'username', with: @admin_user.email
     fill_in 'password', with: "secret_admin"
     click_button 'Log in'
-    visit "/admin/users"
+    visit "/admin"
   end
 
   describe "GET /users" do
@@ -31,15 +31,14 @@ describe "User" do
       entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
       entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
       entry_next = FactoryGirl.create(:entry, date: (Date.today + 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
-
       first(:link, "View").click
       page.should have_content(entry.description)
 
-      first(:link, (Date.today - 1.month).strftime("%B %Y")).click
+      first(:link, (Date.today - 1.month).strftime("%B")).click
       page.should have_content(entry_previous.description)
 
-      first(:link, (Date.today).strftime("%B %Y")).click
-      first(:link, (Date.today + 1.month).strftime("%B %Y")).click
+      first(:link, (Date.today).strftime("%B")).click
+      first(:link, (Date.today + 1.month).strftime("%B")).click
       page.should have_content(entry_next.description)
     end
 
@@ -49,14 +48,15 @@ describe "User" do
       entry_next = FactoryGirl.create(:entry, date: (Date.today + 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @admin_user.id)
 
       first(:link, "View").click
-      page.should have_content("Total:   0:0")
+      page.should have_content("0 hours and 0 minutes")
     end
   end
 
   describe "EDIT /users" do
     it "shows edit form on Edit click" do
       first(:link, "Edit").click
-      page.should have_content("Update User info")
+      # save_and_open_page
+      page.should have_content("Edit")
       page.should have_content("Username")
       page.should have_content("Email")
       page.should have_content("Password")
@@ -67,6 +67,7 @@ describe "User" do
 
   describe "CREATE /users" do
     it "creates user" do
+      first(:link, "Add user").click
       fill_in 'user_username', with: "supertester"
       fill_in 'user_email', with: "supertester@tester.cz"
       fill_in 'user_password', with: "pida_is_da_best"

@@ -12,10 +12,10 @@ describe "Project" do
     project_user.save
 
     visit "/"
-    fill_in 'username', with: @admin_user.username
+    fill_in 'username', with: @admin_user.email
     fill_in 'password', with: "secret_admin"
     click_button 'Log in'
-    visit "/admin/projects"
+    visit "/admin"
   end
 
   describe "GET /projects" do
@@ -32,11 +32,11 @@ describe "Project" do
       first(:link, "View").click
       page.should have_content(entry.description)
 
-      first(:link, (Date.today - 1.month).strftime("%B %Y")).click
+      first(:link, (Date.today - 1.month).strftime("%B")).click
       page.should have_content(entry_previous.description)
 
-      first(:link, (Date.today).strftime("%B %Y")).click
-      first(:link, (Date.today + 1.month).strftime("%B %Y")).click
+      first(:link, (Date.today).strftime("%B")).click
+      first(:link, (Date.today + 1.month).strftime("%B")).click
       page.should have_content(entry_next.description)
     end
 
@@ -45,15 +45,15 @@ describe "Project" do
       entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project_2.id, user_id: @user.id)
       entry_next = FactoryGirl.create(:entry, date: (Date.today + 1.month).strftime("%d/%m/%Y"), project_id: @project_2.id, user_id: @user.id)
 
-      first(:link, "View").click
-      page.should have_content("Total:   0:0")
+      all(:link, 'View')[3].click
+      page.should have_content("0 hours and 0 minutes")
     end
   end
 
   describe "EDIT /projects" do
     it "edit project" do
-      first(:link, "Edit").click
-      page.should have_content("Update Project info")
+      all(:link, "Edit")[3].click
+      page.should have_content("Update")
       page.should have_content("Name")
       page.should have_content("Users")
 
@@ -67,6 +67,9 @@ describe "Project" do
 
   describe "CREATE /projects" do
     it "creates project" do
+      first(:link, "Add project").click
+      page.should have_content("Add new project")
+
       fill_in 'project_name', with: "ybersuperproject"
       click_button 'Save'
 

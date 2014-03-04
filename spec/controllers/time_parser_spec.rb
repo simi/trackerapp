@@ -39,11 +39,11 @@ describe "TimeParser" do
 
   it "fails when unknown string is given" do
     minutes = TimeParser.new("test").minutes
-    expect(minutes).to eq(nil)
+    expect(minutes).to eq(0)
   end
 
   it "fails when unknown string + nr is given" do
     minutes = TimeParser.new("test66").minutes
-    expect(minutes).to eq(nil)
+    expect(minutes).to eq(0)
   end
 end
