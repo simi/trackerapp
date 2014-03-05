@@ -7,7 +7,6 @@ describe "Sessions" do
     fill_in 'username', with: @user.email
     fill_in 'password', with: "incorrect"
     click_button 'Log in'
-    # save_and_open_page
     page.should have_content("Username or password was invalid")
     page.should have_content("Login")
   end
