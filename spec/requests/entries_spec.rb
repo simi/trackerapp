@@ -11,7 +11,7 @@ describe "Entries" do
       project_user.save
 
       visit "/"
-      fill_in 'username', with: @user.email
+      fill_in 'Email', with: @user.email
       fill_in 'password', with: "secret"
       click_button 'Log in'
     end
@@ -45,14 +45,13 @@ describe "Entries" do
       fill_in 'entry_form_time_spent', with: "1.5 h"
       select @project.name, from: 'entry_form_project_id'
       fill_in 'entry_form_description', with: "test description 5"
-      save_and_open_page
       click_button 'Add'
       page.should have_content("test description 5")
 
       fill_in 'entry_form_time_spent', with: "130"
       select @project.name, from: 'entry_form_project_id'
       fill_in 'entry_form_description', with: "test description 6"
-      fill_in 'entry_form_date', with: (Date.today - 1.month).strftime("%d/%m/%Y")
+      page.execute_script("$('#entry_form_date').val('#{1.month.ago.strftime("%d/%m/%Y")}');")
       click_button 'Add'
       first(:link, (Date.today - 1.month).strftime("%B")).click
       page.should have_content("test description 6")
@@ -60,10 +59,8 @@ describe "Entries" do
       fill_in 'entry_form_time_spent', with: "1:15"
       select @project.name, from: 'entry_form_project_id'
       fill_in 'entry_form_description', with: "test description 7"
-      fill_in 'entry_form_date', with: (Date.today + 1.month).strftime("%d/%m/%Y")
+      page.execute_script("$('#entry_form_date').val('#{1.month.from_now.strftime("%d/%m/%Y")}');")
       click_button 'Add'
-      first(:link, (Date.today - 1.month).strftime("%B")).click
-      first(:link, "Tracker").click
       page.should have_content("test description 5")
 
       first(:link, (Date.today + 1.month).strftime("%B")).click
@@ -125,7 +122,7 @@ describe "Entries" do
       fill_in 'entry_form_time_spent', with: "130"
       select @project.name, from: 'entry_form_project_id'
       fill_in 'entry_form_description', with: "test description 6"
-      fill_in 'entry_form_date', with: (Date.today - 1.month).strftime("%d/%m/%Y")
+      page.execute_script("$('#entry_form_date').val('#{1.month.ago.strftime("%d/%m/%Y")}');")
       click_button 'Add'
       first(:link, (Date.today - 1.month).strftime("%B")).click
       page.should have_content("test description 6")
@@ -133,10 +130,8 @@ describe "Entries" do
       fill_in 'entry_form_time_spent', with: "1:15"
       select @project.name, from: 'entry_form_project_id'
       fill_in 'entry_form_description', with: "test description 7"
-      fill_in 'entry_form_date', with: (Date.today + 1.month).strftime("%d/%m/%Y")
+      page.execute_script("$('#entry_form_date').val('#{1.month.from_now.strftime("%d/%m/%Y")}');")
       click_button 'Add'
-      first(:link, (Date.today - 1.month).strftime("%B")).click
-      first(:link, "Track time").click
       page.should have_content("test description 5")
 
       first(:link, (Date.today + 1.month).strftime("%B")).click
