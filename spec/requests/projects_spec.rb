@@ -41,11 +41,11 @@ describe "Project" do
     end
 
     it "shows no entries for project which has none" do
-      entry = FactoryGirl.create(:entry, project_id: @project_2.id, user_id: @user.id)
-      entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project_2.id, user_id: @user.id)
-      entry_next = FactoryGirl.create(:entry, date: (Date.today + 1.month).strftime("%d/%m/%Y"), project_id: @project_2.id, user_id: @user.id)
+      entry = FactoryGirl.create(:entry, project: @project_2, user: @user)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project_2, user: @user)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project_2, user: @user)
 
-      all(:link, 'View')[3].click
+      all(:link, 'View')[2].click
       page.should have_content("0 hours and 0 minutes")
     end
   end

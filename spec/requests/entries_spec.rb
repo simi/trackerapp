@@ -39,7 +39,7 @@ describe "Entries" do
 
     end
 
-    it "creates entry" do
+    it "creates entry", js: true do
       page.should have_content("0 hours and 0 minutes")
 
       fill_in 'entry_form_time_spent', with: "1.5 h"
@@ -113,7 +113,7 @@ describe "Entries" do
 
     end
 
-    it "creates entry" do
+    it "creates entry", js: true do
       page.should have_content("0 hours and 0 minutes")
 
       fill_in 'entry_form_time_spent', with: "1.5 h"
