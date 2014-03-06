@@ -10,10 +10,10 @@ describe "Entries" do
     it "lists existing entries" do
       login_user_with_request(@user)
 
-      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
-      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @user.id)
-      entry_old = FactoryGirl.create(:entry, date: 3.month.ago, project_id: @project.id, user_id: @user.id)
-      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project_id: @project.id, user_id: @user.id)
+      entry = FactoryGirl.create(:entry, project: @project, user: @user)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @user)
+      entry_old = FactoryGirl.create(:entry, date: 3.month.ago, project: @project, user: @user)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project, user: @user)
 
       visit "/"
       page.should have_content(entry.description)
@@ -73,10 +73,10 @@ describe "Entries" do
     it "lists existing entries" do
       login_user_with_request(@user)
 
-      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
-      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @user.id)
-      entry_old = FactoryGirl.create(:entry, date: 3.month.ago, project_id: @project.id, user_id: @user.id)
-      entry_next = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @user.id)
+      entry = FactoryGirl.create(:entry, project: @project, user: @user)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @user)
+      entry_old = FactoryGirl.create(:entry, date: 3.month.ago, project: @project, user: @user)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @user)
 
       visit "/"
       page.should have_content(entry.description)
