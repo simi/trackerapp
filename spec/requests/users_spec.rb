@@ -40,7 +40,7 @@ describe "User" do
     end
 
     it "shows no entries for user who has none" do
-      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @admin_user.id)
+      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @admin.id)
       entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @admin)
       entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project, user: @admin)
       first(:link, "View").click
