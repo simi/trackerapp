@@ -10,13 +10,8 @@ describe "User" do
     project_user.user = @user
     project_user.save
     project_user = FactoryGirl.build(:ProjectUser)
-<<<<<<< HEAD
     project_user.project = @project
-    project_user.user = @admin_user
-=======
-    project_user.project_id = @project.id
-    project_user.user_id = @admin.id
->>>>>>> Perf: login for capybara via a single post request
+    project_user.user = @admin
     project_user.save
 
     login_user_with_request(@admin)
