@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Project" do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @admin_user = FactoryGirl.create(:admin)
+    @admin = FactoryGirl.create(:admin)
     @project = FactoryGirl.create(:project)
     @project_no_entries = FactoryGirl.create(:project)
     project_user = FactoryGirl.build(:ProjectUser)
@@ -11,10 +11,7 @@ describe "Project" do
     project_user.user = @user
     project_user.save
 
-    visit "/"
-    fill_in 'username', with: @admin_user.email
-    fill_in 'password', with: "secret"
-    click_button 'Log in'
+    login_user_with_request(@admin)
     visit "/admin"
   end
 

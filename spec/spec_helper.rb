@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rspec'
 require 'factory_girl'
+require 'support/test_helpers'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -21,6 +22,7 @@ RSpec.configure do |config|
   config.order = "defined"
   config.include Capybara::DSL
   config.include Sorcery::TestHelpers::Rails
+  config.include Trackerapp::TestHelpers
   Capybara.javascript_driver = :webkit
 
   config.before(:suite) do

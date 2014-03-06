@@ -3,21 +3,23 @@ require 'spec_helper'
 describe "User" do
   before(:each) do
     @user = FactoryGirl.create(:user)
-    @admin_user = FactoryGirl.create(:admin)
+    @admin = FactoryGirl.create(:admin)
     @project = FactoryGirl.create(:project)
     project_user = FactoryGirl.build(:ProjectUser)
     project_user.project = @project
     project_user.user = @user
     project_user.save
     project_user = FactoryGirl.build(:ProjectUser)
+<<<<<<< HEAD
     project_user.project = @project
     project_user.user = @admin_user
+=======
+    project_user.project_id = @project.id
+    project_user.user_id = @admin.id
+>>>>>>> Perf: login for capybara via a single post request
     project_user.save
 
-    visit "/"
-    fill_in 'username', with: @admin_user.email
-    fill_in 'password', with: "secret"
-    click_button 'Log in'
+    login_user_with_request(@admin)
     visit "/admin"
   end
 
@@ -44,9 +46,8 @@ describe "User" do
 
     it "shows no entries for user who has none" do
       entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @admin_user.id)
-      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @admin_user.id)
-      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project_id: @project.id, user_id: @admin_user.id)
-
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @admin)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project, user: @admin)
       first(:link, "View").click
       page.should have_content("0 hours and 0 minutes")
     end

@@ -9,14 +9,11 @@ describe "Entries" do
       project_user.project_id = @project.id
       project_user.user_id = @user.id
       project_user.save
-
-      visit "/"
-      fill_in 'Email', with: @user.email
-      fill_in 'password', with: "secret"
-      click_button 'Log in'
     end
 
     it "lists existing entries" do
+      login_user_with_request(@user)
+
       entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
       entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
       entry_old = FactoryGirl.create(:entry, date: (Date.today - 3.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
@@ -40,6 +37,8 @@ describe "Entries" do
     end
 
     it "creates entry", js: true do
+      login_user_manually(@user)
+
       page.should have_content("0 hours and 0 minutes")
 
       fill_in 'entry_form_time_spent', with: "1.5 h"
@@ -79,14 +78,11 @@ describe "Entries" do
       project_user.project_id = @project.id
       project_user.user_id = @user.id
       project_user.save
-
-      visit "/"
-      fill_in 'username', with: @user.email
-      fill_in 'password', with: "secret"
-      click_button 'Log in'
     end
 
     it "lists existing entries" do
+      login_user_with_request(@user)
+
       entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
       entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
       entry_old = FactoryGirl.create(:entry, date: (Date.today - 3.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
@@ -111,6 +107,8 @@ describe "Entries" do
     end
 
     it "creates entry", js: true do
+      login_user_manually(@user)
+
       page.should have_content("0 hours and 0 minutes")
 
       fill_in 'entry_form_time_spent', with: "1.5 h"
