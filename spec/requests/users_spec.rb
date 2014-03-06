@@ -6,12 +6,12 @@ describe "User" do
     @admin_user = FactoryGirl.create(:admin)
     @project = FactoryGirl.create(:project)
     project_user = FactoryGirl.build(:ProjectUser)
-    project_user.project_id = @project.id
-    project_user.user_id = @user.id
+    project_user.project = @project
+    project_user.user = @user
     project_user.save
     project_user = FactoryGirl.build(:ProjectUser)
-    project_user.project_id = @project.id
-    project_user.user_id = @admin_user.id
+    project_user.project = @project
+    project_user.user = @admin_user
     project_user.save
 
     visit "/"
@@ -29,23 +29,23 @@ describe "User" do
 
     it "lists entries per user" do
       entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
-      entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
-      entry_next = FactoryGirl.create(:entry, date: (Date.today + 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @user.id)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @user.id)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project_id: @project.id, user_id: @user.id)
       first(:link, "View").click
       page.should have_content(entry.description)
 
-      first(:link, (Date.today - 1.month).strftime("%B")).click
+      first(:link, 1.month.ago.strftime("%B")).click
       page.should have_content(entry_previous.description)
 
-      first(:link, (Date.today).strftime("%B")).click
-      first(:link, (Date.today + 1.month).strftime("%B")).click
+      first(:link, Date.today.strftime("%B")).click
+      first(:link, 1.month.from_now.strftime("%B")).click
       page.should have_content(entry_next.description)
     end
 
     it "shows no entries for user who has none" do
       entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @admin_user.id)
-      entry_previous = FactoryGirl.create(:entry, date: (Date.today - 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @admin_user.id)
-      entry_next = FactoryGirl.create(:entry, date: (Date.today + 1.month).strftime("%d/%m/%Y"), project_id: @project.id, user_id: @admin_user.id)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @admin_user.id)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project_id: @project.id, user_id: @admin_user.id)
 
       first(:link, "View").click
       page.should have_content("0 hours and 0 minutes")
