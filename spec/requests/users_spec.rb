@@ -51,7 +51,6 @@ describe "User" do
   describe "EDIT /users" do
     it "shows edit form on Edit click" do
       first(:link, "Edit").click
-      # save_and_open_page
       page.should have_content("Edit")
       page.should have_content("Username")
       page.should have_content("Email")
