@@ -37,3 +37,9 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
 end
+
+group :development, :test do
+  gem 'spring-commands-rspec'
+  gem 'rspec-rails'
+  gem 'rb-fsevent' if `uname` =~ /Darwin/
+end
