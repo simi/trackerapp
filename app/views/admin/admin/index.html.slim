@@ -12,6 +12,7 @@
         th Name
         th Email
         th Type
+        th Language
         th
     tbody
       - @users.each do |user|
@@ -19,6 +20,7 @@
           td = user.username
           td = user.email
           td = user.type_in_words
+          td = user.language
           td
             .pull-right
               = link_to admin_user_path(user), class: 'btn btn-default btn-sm' do

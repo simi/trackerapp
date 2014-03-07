@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   validates :username, :email, :presence => true, :allow_nil => false
   validates :password, :presence => true,  :confirmation => true, :on => :create
   validates :password_confirmation, :presence => true, :on => :create
+  validates_inclusion_of :language, :in => %w( en cs ), :message => "has to be 'en' or 'cs'"
 
   serialize :settings, Hash
 
