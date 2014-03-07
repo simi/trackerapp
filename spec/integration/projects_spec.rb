@@ -18,9 +18,9 @@ describe "Project" do
     end
 
     it "lists entries per project" do
-      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
-      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @user.id)
-      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project_id: @project.id, user_id: @user.id)
+      entry = FactoryGirl.create(:entry, project_id: @project.id, user: @user)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @user)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project, user: @user)
 
       first(:link, "View").click
       page.should have_content(entry.description)
@@ -28,7 +28,7 @@ describe "Project" do
       first(:link, 1.month.ago.strftime("%B")).click
       page.should have_content(entry_previous.description)
 
-      first(:link, Date.today.strftime("%B")).click
+      first(:link, Date.current.strftime("%B")).click
       first(:link, 1.month.from_now.strftime("%B")).click
       page.should have_content(entry_next.description)
     end
