@@ -4,12 +4,8 @@ describe "Project" do
   before(:each) do
     @user = FactoryGirl.create(:user)
     @admin = FactoryGirl.create(:admin)
-    @project = FactoryGirl.create(:project)
-    @project_no_entries = FactoryGirl.create(:project)
-    project_user = FactoryGirl.build(:ProjectUser)
-    project_user.project = @project
-    project_user.user = @user
-    project_user.save
+    @project = FactoryGirl.create(:project, users: [@user, @admin])
+    @project_no_entries = FactoryGirl.create(:project, users: [@user, @admin])
 
     login_user_with_request(@admin)
     visit "/admin"

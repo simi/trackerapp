@@ -17,9 +17,9 @@ describe "User" do
     end
 
     it "lists entries per user" do
-      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @user.id)
-      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project_id: @project.id, user_id: @user.id)
-      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project_id: @project.id, user_id: @user.id)
+      entry = FactoryGirl.create(:entry, project: @project, user: @user)
+      entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @user)
+      entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project, user: @user)
       first(:link, "View").click
       page.should have_content(entry.description)
 
@@ -32,7 +32,7 @@ describe "User" do
     end
 
     it "shows no entries for user who has none" do
-      entry = FactoryGirl.create(:entry, project_id: @project.id, user_id: @admin.id)
+      entry = FactoryGirl.create(:entry, project: @project, user_id: @admin.id)
       entry_previous = FactoryGirl.create(:entry, date: 1.month.ago, project: @project, user: @admin)
       entry_next = FactoryGirl.create(:entry, date: 1.month.from_now, project: @project, user: @admin)
       first(:link, "View").click
