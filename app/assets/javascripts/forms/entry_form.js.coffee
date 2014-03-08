@@ -19,8 +19,6 @@ class @EntryForm
       weekdaysShort: [ 'ne', 'po', 'út', 'st', 'čt', 'pá', 'so' ]
     }
 
-    alert @locale
-
     if @locale == "cs"
       configuration = configuration_cs
     else
