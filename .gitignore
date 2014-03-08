@@ -5,6 +5,7 @@
 *.log
 
 config/database.yml
+config/secrets.yml
 db/*.sqlite3
 josef
 tmp/*
