@@ -16,5 +16,5 @@
 //= require bootstrap/alert
 //= require pickadate/picker
 //= require pickadate/picker.date
-//= # require pickadate/translations/cs_CZ
+//= #require pickadate/translations/cs_CZ
 //= require_directory ./forms

@@ -21,6 +21,7 @@ gem 'jquery-cdn'
 gem 'rails-behaviors'
 gem 'pickadate-rails'
 gem 'select2-rails'
+# gem "i18n-js"
 # gem 'turbolinks'
 
 group :development do

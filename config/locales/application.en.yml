@@ -1,2 +1,8 @@
 en:
   track_time: "Track time"
+  description: "Description"
+  task_url: "Task URL or URLs"
+  today_change: "Today (change &raquo;)"
+  add: "Add"
+
+  entries: "Entries"

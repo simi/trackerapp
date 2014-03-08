@@ -24,9 +24,9 @@ class EntryForm < Form
   def date_in_words
     # if date was set to today, or wasnt set at all
     if (@date.present? && @date == Date.current) || @date.blank?
-      "Today (change &raquo;)".html_safe
+      I18n.t('today_change').html_safe
     else
-      I18n.l(@date, format: :long)
+      I18n.l(@date, :format => "d% %B, %Y")
     end
   end
 

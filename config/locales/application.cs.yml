@@ -1,2 +1,9 @@
 cs:
   track_time: "Přidej záznam"
+  description: "Popis"
+  task_url: "Odkaz na úkol, nebo odkazy"
+  today_change: "Dnes (změnit &raquo;)"
+  add: "Přidat"
+
+  entries: "Záznamy"
+
