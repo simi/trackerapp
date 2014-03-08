@@ -1,9 +1,28 @@
 cs:
-  track_time: "Přidej záznam"
-  description: "Popis"
-  task_url: "Odkaz na úkol, nebo odkazy"
-  today_change: "Dnes (změnit &raquo;)"
-  add: "Přidat"
-
-  entries: "Záznamy"
+  common:
+    are_you_sure: "Jste si jistý/á?"
+    log_out: "Odhlásit"
+  entries:
+    track_time: "Přidej záznam"
+    description: "Popis"
+    task_url: "Odkaz na úkol, nebo odkazy"
+    today_change: "Dnes (změnit &raquo;)"
+    add: "Přidat"
+    entries: "Záznamy"
+    minutes: "minuty"
+    hours: "hodiny"
+    and: "a"
+    total: "Celkem"
+  admin:
+    administration: "Administrace"
+    users: "Uživatelé"
+    add_user: "Přidat uživatele"
+    projects: "Projekty"
+    add_project: "Přidat projekt"
+    name: "Jméno"
+    type: "Typ"
+    soldier: "Voják"
+    soldiers: "Vojáci"
+    admin: "Správce"
+    email: "Email"
 

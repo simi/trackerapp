@@ -1,6 +1,6 @@
 .form-inline.box
 
-  h1 = t('track_time')
+  h1 = t('entries.track_time')
 
   = form_for @entry_form, url: entries_path, html: { id: 'entry-form', class: 'form-inline' }, role: 'form' do |f|
 
@@ -19,13 +19,13 @@
           = text_field_tag :date, @entry_form.date_in_words, class: 'datepicker'
 
         .col-sm-6
-          = f.text_area :description, rows: "2", placeholder: t("description"), class: "form-control"
+          = f.text_area :description, rows: "2", placeholder: t("entries.description"), class: "form-control"
 
         .col-sm-6
-          = f.text_area :links, rows: "2", placeholder: t("task_url"), class: "form-control"
+          = f.text_area :links, rows: "2", placeholder: t("entries.task_url"), class: "form-control"
 
       .col-sm-1.btn-container
-        = f.submit t("add"), class: "btn btn-default form-control"
+        = f.submit t("entries.add"), class: "btn btn-default form-control"
 
 div id="lang" data-url="#{@current_user.language}"
 

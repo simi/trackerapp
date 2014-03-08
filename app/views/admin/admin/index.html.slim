@@ -1,18 +1,17 @@
 .box
 
-  h1 Users
+  h1 = t('admin.users')
 
   .box-nav
     = link_to new_admin_user_path, class: 'btn-box' do
-      span.glyphicon-plus Add user
+      span.glyphicon-plus #{t('admin.add_user')}
 
   table.table
     thead
       tr
-        th Name
-        th Email
-        th Type
-        th Language
+        th #{t('admin.name')}
+        th #{t('admin.email')}
+        th #{t('admin.type')}
         th
     tbody
       - @users.each do |user|
@@ -20,7 +19,6 @@
           td = user.username
           td = user.email
           td = user.type_in_words
-          td = user.language
           td
             .pull-right
               = link_to admin_user_path(user), class: 'btn btn-default btn-sm' do
@@ -32,18 +30,18 @@
 
 .box
 
-  h1 Projects
+  h1 = t('admin.projects')
 
   .box-nav
     = link_to new_admin_project_path, class: 'btn-box' do
-      span.glyphicon-plus Add project
+      span.glyphicon-plus #{t('admin.add_project')}
 
   table.table
 
     thead
       tr
-        th Name
-        th Soldiers
+        th #{t('admin.name')}
+        th #{t('admin.soldiers')}
         th
 
     tbody

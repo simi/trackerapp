@@ -1,15 +1,15 @@
 .topnav
   - if logged_in?
-    = link_to root_path, class: "nav-item #{nav_item_class('root')}", title: 'Track time' do
+    = link_to root_path, class: "nav-item #{nav_item_class('root')}", title: t('entries.track_time') do
       span.icon-user
 
     - if current_user.admin?
-      = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: 'Administration' do
+      = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: t('admin.administration') do
         span.icon-users
 
     / - if current_user.admin?
     /   = link_to admin_path, class: "nav-item #{nav_item_class('settings')}", title: 'Settings' do
     /     span.icon-edit
 
-    = link_to logout_path, class: "nav-item", title: "Logout, #{current_user.username}" do
+    = link_to logout_path, class: "nav-item", title: "#{t('common.log_out')}, #{current_user.username}" do
       span.icon-turnoff
