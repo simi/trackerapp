@@ -1,9 +1,9 @@
 div class="box-nav pagination-#{position}"
 
   = link_to admin_user_path(@user, from: @previous_month.to_s(:db)), class: 'btn-box' do
-    = @previous_month.strftime("%B")
+    = l(@previous_month, :format => "%B")
 
-  span.btn-box = @from.strftime("%B")
+  span.btn-box = l(@from, :format => "%B")
 
   = link_to admin_user_path(@user, from: @next_month.to_s(:db)), class: 'btn-box' do
-    = @next_month.strftime("%B")
+    = l(@next_month, :format => "%B")
