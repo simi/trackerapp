@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
   def create
     @entry_form = EntryForm.new(entry_form_params)
     if @entry_form.submit
-      redirect_to entries_path, :notice => "Entry created."
+      redirect_to entries_path, :notice => t('messages.entry_created')
     else
       index
       render :index
@@ -35,7 +35,7 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
     @entry.destroy
 
-    redirect_to root_path, :notice => "Entry destroyed."
+    redirect_to root_path, :notice => t('messages.entry_deleted')
   end
 
   private

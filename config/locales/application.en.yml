@@ -48,4 +48,16 @@ en:
     log_in: "Log in"
   messages:
     save_prohibited: "prohibited from save"
-
+    must_be_admin: "You must be admin to access this section"
+    project_created: "Project created."
+    project_updated: "Project updated."
+    project_deleted: "Project deleted."
+    user_created: "User created."
+    user_updated: "User updated."
+    user_deleted: "User deleted."
+    entry_created: "Entry created."
+    entry_deleted: "Entry deleted."
+    must_login: "Please login to access this app."
+    logged_in: "Logged in!"
+    logged_out: "Logged out!"
+    invalid_credentials: "Username or password was invalid"
