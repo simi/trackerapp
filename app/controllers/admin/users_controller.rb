@@ -11,7 +11,7 @@ class Admin::UsersController < Admin::ApplicationController
     end
 
     if @user.save
-      redirect_to admin_path, :notice => "User created."
+      redirect_to admin_path, :notice => t('users.user_created')
     else
       render 'new'
     end
@@ -25,7 +25,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_path, :notice => "User updated."
+      redirect_to admin_path, :notice => t('users.user_updated')
     else
       render 'edit'
     end
@@ -35,7 +35,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    redirect_to admin_path, :notice => "User destroyed."
+    redirect_to admin_path, :notice => t('users.user_deleted')
   end
 
   def show
@@ -57,7 +57,7 @@ class Admin::UsersController < Admin::ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin, :language)
   end
 
 end

@@ -4,6 +4,7 @@ FactoryGirl.define do
     email "tester@test.com"
     password "secret"
     password_confirmation "secret"
+    language "en"
   end
 
   factory :admin, class: User do
@@ -12,6 +13,7 @@ FactoryGirl.define do
     password "secret"
     password_confirmation "secret"
     admin true
+    language "en"
   end
 
   factory :entry do

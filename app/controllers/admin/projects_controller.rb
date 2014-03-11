@@ -8,7 +8,7 @@ class Admin::ProjectsController < Admin::ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to admin_path, :notice => "Project created."
+      redirect_to admin_path, :notice => t('projects.project_created')
     else
       render :index
     end
@@ -20,9 +20,9 @@ class Admin::ProjectsController < Admin::ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    
+
     if @project.update(project_params)
-      redirect_to admin_path, :notice => "Project updated."
+      redirect_to admin_path, :notice => t('projects.project_updated')
     else
       render 'edit'
     end
@@ -32,7 +32,7 @@ class Admin::ProjectsController < Admin::ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to admin_path, :notice => "Project destroyed."
+    redirect_to admin_path, :notice => t('projects.project_deleted')
   end
 
   def show

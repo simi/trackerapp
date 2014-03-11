@@ -1,6 +1,6 @@
 .container
   .well.well-sm
-    b = "Project Name: #{@project.name}"
-    b = "Assigned Users: #{@project.users.map(&:username).join(", ") }"
+    b = "#{t('projects.project_name')}: #{@project.name}"
+    b = "#{t('projects.assigned_users')}: #{@project.users.map(&:username).join(", ") }"
 
 = render "entries/entries"

@@ -59,6 +59,7 @@ describe "User" do
       fill_in 'user_email', with: "supertester@tester.cz"
       fill_in 'user_password', with: "pida_is_da_best"
       fill_in 'user_password_confirmation', with: "pida_is_da_best"
+      fill_in 'user_language', with: "en"
       click_button 'Save'
 
       page.should have_content("supertester")

@@ -1,7 +1,7 @@
 .well.well-sm
-  b = "Username: #{@user.username}"
-  b = "Email: #{@user.email}"
-  b = "Kind: #{@user.type_in_words}"
-  b = "Projects: #{@user.projects.map(&:name).join(", ") }"
+  b = "#{t('users.username')}: #{@user.username}"
+  b = "#{t('users.email')}: #{@user.email}"
+  b = "#{t('users.kind')}: #{@user.type_in_words}"
+  b = "#{t('users.projects')}: #{@user.projects.map(&:name).join(", ") }"
 
 = render "entries/entries"

@@ -4,32 +4,37 @@
   = render 'layouts/errors', object: @user
 
   .form-group
-    = f.label :username, 'Username', class: 'col-sm-4 control-label'
+    = f.label :username, t('users.username'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.text_field :username, class: 'form-control'
 
   .form-group
-    = f.label :email, 'Email', class: 'col-sm-4 control-label'
+    = f.label :email, t('users.email'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.text_field :email, class: 'form-control'
 
   .form-group
-    = f.label :password, 'Password', class: 'col-sm-4 control-label'
+    = f.label :password, t('users.password'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.password_field :password, class: 'form-control'
 
   .form-group
-    = f.label :password_confirmation, 'Password confirmation', class: 'col-sm-4 control-label'
+    = f.label :password_confirmation, t('users.password_confirmation'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.password_field :password_confirmation, class: 'form-control'
 
-    .form-group
-      .col-sm-offset-4.col-sm-4
-        .checkbox
-          label
-            = f.check_box :admin
-            | Admin?
+  .form-group
+    = f.label :language, t('users.language'), class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :language, class: 'form-control'
 
   .form-group
     .col-sm-offset-4.col-sm-4
-      = f.submit "Save", class: 'btn btn-default'
+      .checkbox
+        label
+          = f.check_box :admin
+          | #{t('users.admin')}?
+
+  .form-group
+    .col-sm-offset-4.col-sm-4
+      = f.submit t('users.save'), class: 'btn btn-default'

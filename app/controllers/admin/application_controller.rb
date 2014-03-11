@@ -4,7 +4,7 @@ class Admin::ApplicationController < ApplicationController
   private
   def require_admin
     return if current_user.admin?
-    flash[:error] = "You must be admin to access this section"
+    flash[:alert] = t('common.must_be_admin')
     redirect_to root_url
   end
 

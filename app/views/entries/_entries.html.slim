@@ -1,13 +1,13 @@
 .box
 
-  h1 Entries
+  h1 = t('entries.entries')
 
   = render 'pagination', position: 'top'
 
   table.table
     thead
       tr.summary
-        th colspan=3 = "Total: #{formatted_minutes(@total, legend: true)}"
+        th colspan=3 = "#{t('entries.total')}: #{formatted_minutes(@total, legend: true)}"
 
     tbody
       - @entries.group_by(&:date).sort.reverse.each do |date, entries|
@@ -22,7 +22,7 @@
             td
               = entry.description
               span.actions
-                = link_to entry_path(entry), data: { confirm: 'Are you sure?', method: 'delete' }, class: 'btn btn-default btn-sm' do
+                = link_to entry_path(entry), data: { confirm: t('common.are_you_sure'), method: 'delete' }, class: 'btn btn-default btn-sm' do
                   .glyphicon.glyphicon-trash
 
     - if @entries.any?
