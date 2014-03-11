@@ -1,10 +1,10 @@
 .topnav
   - if logged_in?
-    = link_to root_path, class: "nav-item #{nav_item_class('root')}", title: t('entries.track_time') do
+    = link_to root_path, class: "nav-item #{nav_item_class('root')}", title: t('common.track_time') do
       span.icon-user
 
     - if current_user.admin?
-      = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: t('admin.administration') do
+      = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: t('common.administration') do
         span.icon-users
 
     / - if current_user.admin?

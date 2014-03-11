@@ -4,27 +4,27 @@
   = render 'layouts/errors', object: @user
 
   .form-group
-    = f.label :username, t('admin.username'), class: 'col-sm-4 control-label'
+    = f.label :username, t('users.username'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.text_field :username, class: 'form-control'
 
   .form-group
-    = f.label :email, t('admin.email'), class: 'col-sm-4 control-label'
+    = f.label :email, t('users.email'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.text_field :email, class: 'form-control'
 
   .form-group
-    = f.label :password, t('admin.password'), class: 'col-sm-4 control-label'
+    = f.label :password, t('users.password'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.password_field :password, class: 'form-control'
 
   .form-group
-    = f.label :password_confirmation, t('admin.password_confirmation'), class: 'col-sm-4 control-label'
+    = f.label :password_confirmation, t('users.password_confirmation'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.password_field :password_confirmation, class: 'form-control'
 
   .form-group
-    = f.label :language, t('admin.language'), class: 'col-sm-4 control-label'
+    = f.label :language, t('users.language'), class: 'col-sm-4 control-label'
     .col-sm-4
       = f.text_field :language, class: 'form-control'
 
@@ -33,8 +33,8 @@
       .checkbox
         label
           = f.check_box :admin
-          | #{t('admin.admin')}?
+          | #{t('users.admin')}?
 
   .form-group
     .col-sm-offset-4.col-sm-4
-      = f.submit t('admin.save'), class: 'btn btn-default'
+      = f.submit t('users.save'), class: 'btn btn-default'

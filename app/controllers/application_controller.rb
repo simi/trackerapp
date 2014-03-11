@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def not_authenticated
-    redirect_to login_url, :alert => t('messages.must_login')
+    redirect_to login_url, :alert => t('common.must_login')
   end
 
   before_filter :set_user_language
