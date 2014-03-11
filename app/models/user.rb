@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :username, :email, :presence => true, :allow_nil => false
   validates :password, :presence => true,  :confirmation => true, :on => :create
   validates :password_confirmation, :presence => true, :on => :create
-  validates_inclusion_of :language, :in => %w( en cs ), :message => "has to be 'en' or 'cs'"
+  validates_inclusion_of :language, :in => %w( en cs ), :message => I18n.t("users.language_has_to_be")
 
   serialize :settings, Hash
 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def type_in_words
-    admin? ? "Admin" : "Soldier"
+    admin? ? I18n.t('users.admin') : I18n.t('users.soldier')
   end
 
   private

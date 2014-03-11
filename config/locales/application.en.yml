@@ -52,6 +52,7 @@ en:
     add_new_user: "Add new user"
     kind: "Kind"
     projects: "Projects"
+    language_has_to_be: "has to be 'en' or 'cs'"
   admin:
     users: "Users"
     add_user: "Add user"

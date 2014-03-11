@@ -55,6 +55,8 @@ cs:
     add_new_user: "Přidat nového uživatele"
     kind: "Druh"
     projects: "Projekty"
+    soldier: "Voják"
+    language_has_to_be: "musí být 'en' nebo 'cs'"
   admin:
     users: "Uživatelé"
     add_user: "Přidat uživatele"
