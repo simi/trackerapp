@@ -7,9 +7,9 @@
       = link_to admin_path, class: "nav-item #{nav_item_class('admin')}", title: t('common.administration') do
         span.icon-users
 
-    / - if current_user.admin?
-    /   = link_to admin_path, class: "nav-item #{nav_item_class('settings')}", title: t('common.settings') do
-    /     span.icon-edit
+    - if current_user.admin?
+      = link_to settings_path, class: "nav-item #{nav_item_class('settings')}", title: t('common.settings') do
+        span.icon-edit
 
     = link_to logout_path, class: "nav-item", title: "#{t('common.log_out')}, #{current_user.username}" do
       span.icon-turnoff

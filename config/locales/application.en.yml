@@ -52,7 +52,10 @@ en:
     add_new_user: "Add new user"
     kind: "Kind"
     projects: "Projects"
+    soldier: "Soldier"
     language_has_to_be: "has to be 'en' or 'cs'"
+    settins_updated: "Settings updated."
+    edit_settings: "Edit settings"
   admin:
     users: "Users"
     add_user: "Add user"

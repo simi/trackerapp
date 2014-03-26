@@ -57,6 +57,8 @@ cs:
     projects: "Projekty"
     soldier: "Voják"
     language_has_to_be: "musí být 'en' nebo 'cs'"
+    settins_updated: "Nastavení aktualizováno."
+    edit_settings: "Aktualizace nastavení"
   admin:
     users: "Uživatelé"
     add_user: "Přidat uživatele"

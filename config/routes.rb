@@ -10,6 +10,9 @@ Trackerapp::Application.routes.draw do
     get :autocomplete_project_name, :on => :collection
   end
 
+  get 'settings', to: 'users#edit'
+  resources :users
+
   namespace :admin do
     get '/' => "admin#index"
     resources :projects
