@@ -4,11 +4,10 @@ class PasswordForm < Form
 
   validates :password, :presence => true,  :confirmation => true, :on => :create
 
-  def initialize(attributes = {})
+  def initialize(attributes = {}, current_user = nil)
     return if attributes.blank?
 
-    @user = User.find(attributes[:id])
-    attributes.delete(:id)
+    @user = current_user
 
     store(attributes)
     @user.update(attributes)

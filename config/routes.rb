@@ -11,7 +11,15 @@ Trackerapp::Application.routes.draw do
   end
 
   get 'settings', to: 'users#edit'
-  resources :users
+
+  resource :user do
+    collection do
+      put :update_settings
+      patch :update_settings
+      put :update_password
+      patch :update_password
+    end
+  end
 
   namespace :admin do
     get '/' => "admin#index"

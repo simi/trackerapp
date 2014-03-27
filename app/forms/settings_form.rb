@@ -4,12 +4,10 @@ class SettingsForm < Form
 
   validates_inclusion_of :language, :in => %w( en cs ), :message => I18n.t("users.language_has_to_be")
 
-  def initialize(attributes = {})
+  def initialize(attributes = {}, current_user = nil)
     return if attributes.blank?
 
-    @user = User.find(attributes[:id])
-    attributes.delete(:id)
-
+    @user = current_user
     store(attributes)
     @user.update(attributes)
   end
