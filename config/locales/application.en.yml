@@ -55,7 +55,10 @@ en:
     soldier: "Soldier"
     language_has_to_be: "has to be 'en' or 'cs'"
     settins_updated: "Settings updated."
+    settings: "Settings"
     edit_settings: "Edit settings"
+    change_password: "Change password"
+    update: "Update"
   admin:
     users: "Users"
     add_user: "Add user"

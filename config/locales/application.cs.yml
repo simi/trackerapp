@@ -58,7 +58,10 @@ cs:
     soldier: "Voják"
     language_has_to_be: "musí být 'en' nebo 'cs'"
     settins_updated: "Nastavení aktualizováno."
-    edit_settings: "Aktualizace nastavení"
+    settings: "Nastavení"
+    edit_settings: "Upravit nastavení"
+    change_password: "Změnit heslo"
+    update: "Aktualizovat"
   admin:
     users: "Uživatelé"
     add_user: "Přidat uživatele"

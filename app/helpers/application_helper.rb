@@ -24,9 +24,9 @@ module ApplicationHelper
              when 'root'
                params[:controller] == 'entries'
              when 'admin'
-              ['admin/projects', 'admin/users', 'admin/admin'].include?(params[:controller])
-              when 'settings'
-                # TODO
+               ['admin/projects', 'admin/users', 'admin/admin'].include?(params[:controller])
+             when 'settings'
+               params[:controller] == 'users'
              end
 
     classes = ['nav-item']
