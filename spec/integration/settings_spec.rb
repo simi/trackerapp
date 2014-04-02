@@ -16,17 +16,17 @@ describe "Settings" do
 
   it "updates settings" do
     visit "/settings"
-    fill_in 'user_username', with: "tester_updated"
-    fill_in 'user_email', with: "tester_updated@tester.cz"
+    fill_in 'settings_form_username', with: "tester_updated"
+    fill_in 'settings_form_email', with: "tester_updated@tester.cz"
     first(:button, "Update").click
-    page.should have_field('user_username', :with => 'tester_updated')
-    page.should have_field('user_email', :with => 'tester_updated@tester.cz')
+    page.should have_field('settings_form_username', :with => 'tester_updated')
+    page.should have_field('settings_form_email', :with => 'tester_updated@tester.cz')
   end
 
   it "changes password" do
     visit "/settings"
-    fill_in 'user_password', with: "updated_password"
-    fill_in 'user_password_confirmation', with: "updated_password"
+    fill_in 'password_form_password', with: "updated_password"
+    fill_in 'password_form_password_confirmation', with: "updated_password"
     all(:button, 'Update')[1].click
     visit "/logout"
     fill_in 'username', with: @user.email

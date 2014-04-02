@@ -4,12 +4,15 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
 
-    @password_form ||= PasswordForm.new
-    @settings_form ||= SettingsForm.new
+    @settings_form ||= SettingsForm.new(current_user)
+    @password_form ||= PasswordForm.new(current_user)
   end
 
   def update_password
-    @password_form = PasswordForm.new(password_form_params, current_user)
+    @user = current_user
+
+    @password_form = PasswordForm.new(current_user, password_form_params)
+    @settings_form ||= SettingsForm.new(current_user)
 
     if @password_form.submit
       redirect_to settings_path, :notice => t('users.password_changed')
@@ -19,7 +22,10 @@ class UsersController < ApplicationController
   end
 
   def update_settings
-    @settings_form = SettingsForm.new(settings_form_params, current_user)
+    @user = current_user
+
+    @settings_form = SettingsForm.new(current_user, settings_form_params)
+    @password_form ||= PasswordForm.new(current_user)
 
     if @settings_form.submit
       redirect_to settings_path, :notice => t('users.settings_updated')
@@ -31,12 +37,12 @@ class UsersController < ApplicationController
   private
 
   def password_form_params
-    params.require(:user).
+    params.require(:password_form).
       permit(:password, :password_confirmation)
   end
 
   def settings_form_params
-    params.require(:user).
+    params.require(:settings_form).
       permit(:username, :email, :language)
   end
 end

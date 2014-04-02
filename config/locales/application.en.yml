@@ -60,7 +60,6 @@ en:
     edit_settings: "Edit settings"
     change_password: "Change password"
     update: "Update"
-
   admin:
     users: "Users"
     add_user: "Add user"

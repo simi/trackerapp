@@ -1,6 +1,6 @@
-= form_for @user, :url => update_settings_user_path, html: { id: 'user-form', class: 'form-horizontal'} do |f|
+= form_for @settings_form, :url => update_settings_user_path, html: { id: 'user-form', class: 'form-horizontal'} do |f|
 
-  = render 'layouts/errors', object: @user
+  = render 'layouts/errors', object: @settings_form
 
   .form-group
     = f.label :username, t('users.username'), class: 'col-sm-4 control-label'

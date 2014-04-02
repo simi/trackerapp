@@ -14,10 +14,12 @@ Trackerapp::Application.routes.draw do
 
   resource :user do
     collection do
-      put :update_settings
       patch :update_settings
-      put :update_password
+      post :update_settings
+      get :update_settings
       patch :update_password
+      get :update_password
+      post :update_password
     end
   end
 
