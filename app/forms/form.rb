@@ -1,5 +1,6 @@
 class Form
   include ActiveModel::Model
+  include ActiveModel::Validations
 
   private
   def store(attributes)

@@ -1,0 +1,22 @@
+= form_for @settings_form, :url => update_settings_user_path, html: { id: 'user-form', class: 'form-horizontal'} do |f|
+
+  = render 'layouts/errors', object: @settings_form
+
+  .form-group
+    = f.label :username, t('users.username'), class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :username, class: 'form-control'
+
+  .form-group
+    = f.label :email, t('users.email'), class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :language, t('users.language'), class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.text_field :language, class: 'form-control'
+
+  .form-group
+    .col-sm-offset-4.col-sm-4
+      = f.submit t('users.update'), class: 'btn btn-default'
