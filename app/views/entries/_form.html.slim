@@ -5,6 +5,7 @@
   = form_for @entry_form, url: entries_path, html: { id: 'entry-form', class: 'form-inline' }, role: 'form' do |f|
 
     = render 'layouts/errors', object: @entry_form
+    div id="entry_form_time_spent_error" class="alert alert-danger"
 
     .row
 
@@ -25,9 +26,10 @@
           = f.text_area :links, rows: "2", placeholder: t("entries.task_url"), class: "form-control"
 
       .col-sm-1.btn-container
-        = f.submit t("entries.add"), class: "btn btn-default form-control"
+        = f.submit t("entries.add"), class: "btn btn-default form-control disable-button"
 
 div id="lang" data-url="#{@current_user.language}"
+
 
 javascript:
   $(function() {
