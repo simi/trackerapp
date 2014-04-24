@@ -63,6 +63,7 @@ cs:
     edit_settings: "Upravit nastavení"
     change_password: "Změnit heslo"
     update: "Aktualizovat"
+    salary: "Mzda"
   admin:
     users: "Uživatelé"
     add_user: "Přidat uživatele"

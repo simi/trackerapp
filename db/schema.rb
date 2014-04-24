@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307084133) do
+ActiveRecord::Schema.define(version: 20140416151000) do
 
   create_table "entries", force: true do |t|
     t.string   "original_id"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20140307084133) do
     t.datetime "updated_at"
   end
 
+  create_table "salaries", force: true do |t|
+    t.integer  "value"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "ended_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username",                                     null: false
     t.string   "email"
@@ -55,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140307084133) do
     t.text     "settings"
     t.boolean  "admin",                        default: false
     t.string   "language",                     default: "en"
+    t.integer  "current_salary"
   end
 
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token"
