@@ -37,6 +37,7 @@ en:
     add_new_project: "Add new project"
     project_name: "Project name"
     assigned_users: "Assigned users"
+    project: "Project"
   users:
     user_created: "User created."
     user_updated: "User updated."
@@ -60,6 +61,8 @@ en:
     edit_settings: "Edit settings"
     change_password: "Change password"
     update: "Update"
+    salary: "Salary"
+    user: "User"
   admin:
     users: "Users"
     add_user: "Add user"

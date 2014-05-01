@@ -29,6 +29,11 @@
       = f.text_field :language, class: 'form-control'
 
   .form-group
+    = f.label :current_salary, t('users.current_salary'), class: 'col-sm-4 control-label'
+    .col-sm-4
+      = f.number_field :current_salary, class: 'form-control'
+
+  .form-group
     .col-sm-offset-4.col-sm-4
       .checkbox
         label

@@ -25,7 +25,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to admin_path, :notice => t('users.user_updated')
+      redirect_to edit_admin_user_path, :notice => t('users.user_updated')
     else
       render 'edit'
     end
@@ -57,7 +57,7 @@ class Admin::UsersController < Admin::ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin, :language)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin, :language, :current_salary)
   end
 
 end
