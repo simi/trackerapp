@@ -41,7 +41,7 @@ class EntriesController < ApplicationController
   private
   def entry_form_params
     params.require(:entry_form).
-      permit(:description, :date, :time_spent, :project_id).
+      permit(:description, :date, :time_spent, :project_id, :links).
       merge(user_id: current_user.id)
   end
 
