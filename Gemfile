@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # stack
-gem 'rails', '4.1.0.beta2'
+gem 'rails', '~> 4.1.0'
 gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.1'
 gem 'bootstrap-sass', '~> 3.1.1'
@@ -18,7 +18,7 @@ gem 'letsfreckle-client', require: 'letsfreckle'
 
 # javascripts
 gem 'jquery-cdn'
-gem 'rails-behaviors'
+gem 'rails-behaviors', github: 'josh/rails-behaviors', branch: 'v0.4.1'
 gem 'pickadate-rails'
 gem 'select2-rails'
 # gem "i18n-js"
